@@ -1,6 +1,6 @@
-.header {
+/*.header {
   margin-bottom: 3em;
-}
+}*/
 
 .header h4 {
   display: inline;
@@ -33,4 +33,17 @@
 .landing button {
   position: relative;
   left: 10em;
+}
+
+.landing .results {
+  margin-top: 3em;
+}
+
+.landing .results h5 {
+  display: inline;
+}
+
+.landing img {
+  height: 13em;
+  width: 13em;
 }

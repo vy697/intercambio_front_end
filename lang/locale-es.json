@@ -1,10 +1,12 @@
 {
   "landing_message": "ganar fluidez en otro idioma. haz amig@s. aprende otra cultura...sin tener que salir de tu ciudad.",
+  "register": "Registrarse",
   "i_speak": "Hablo..",
   "i_want_to_learn": "Quiero aprender..",
   "city_label": "Ciudad:",
   "search": "Busca mi intercambio",
   "tour": "Quieres un tour de la web? Utiliza nuestra ",
+  "or": "-O-",
   "demo": "cuenta demo.",
   "en": "inglés",
   "es": "español",
@@ -28,5 +30,7 @@
   "exchange_type_preferred": "Preferencia de intercambio:",
   "pair": "en pareja",
   "group": "en grupo",
-  "online": "online"
+  "online": "online",
+  "all_exchanges": "Ver todos los intercambios disponibles"
+
 }

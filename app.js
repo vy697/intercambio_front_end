@@ -29,3 +29,27 @@ app.config(['$routeProvider', function($routeProvider) {
     controllerAs: 'signup'
   });
 }]);
+
+app.filter('pair', function() {
+  return function(data) {
+      if(data){
+        return '•pair';
+      }
+    };
+  });
+
+app.filter('group', function() {
+  return function(data) {
+    if(data) {
+      return '•group';
+    }
+  };
+});
+
+app.filter('online', function() {
+  return function(data) {
+    if(data) {
+      return '•online';
+    }
+  };
+});

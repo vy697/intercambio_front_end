@@ -1,10 +1,12 @@
 {
   "landing_message": "get fluent in a foreign language. make friends. learn a new culture...all without leaving your city.",
+  "register": "Sign Up",
   "i_speak": "I speak..",
   "i_want_to_learn": "I want to learn..",
   "city_label": "City:",
   "search": "Find My Exchange",
   "tour": "Wanna tour of the site? Use our ",
+  "or": "-OR-",
   "demo": "demo account.",
   "en": "English",
   "es": "Spanish",
@@ -28,5 +30,6 @@
   "exchange_type_preferred": "Preferred exchange type: ",
   "pair": "Pair",
   "group": "Group",
-  "online": "Online"
+  "online": "Online",
+  "all_exchanges": "See All Available Exchanges"
 }

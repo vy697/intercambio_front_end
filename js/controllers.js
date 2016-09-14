@@ -1,14 +1,20 @@
 'use strict';
 
-app.controller('landingController', ['localizeService', 'exchangeListService', '$translate', function(localizeService, exchangeListService, $translate) {
+app.controller('landingController', ['localizeService', 'exchangeListService', '$translate', '$http', function(localizeService, exchangeListService, $translate, $http) {
 
   var vm = this;
 
   vm.changeLanguage = localizeService.changeLanguage;
 
-  vm.exchanges;
+  //from service:
+  // vm.getExchanges = exchangeListService.getExchanges;
 
-  vm.getExchanges = exchangeListService.getExchanges()
+  // vm.exchanges = exchangeListService.exchanges;
+
+  // console.log(vm.exchanges);
+
+  vm.getExchanges = function() {
+    $http.get("http://localhost:3000/search")
     .then(function(data) {
       vm.exchanges = data.data;
       console.log('THIS IS THE EXCHANGE DATA: ', vm.exchanges);
@@ -16,16 +22,7 @@ app.controller('landingController', ['localizeService', 'exchangeListService', '
     .catch(function(err) {
       console.log('where is my data: ', err);
     });
-
-  // vm.getPosts = postService.getPosts()
-  //   .then(function(response) {
-  //   vm.posts = response.data.data;
-  //   vm.postId = response.data.data.id;
-  //   console.log('THESE ARE THE POSTS: ',response.data.data);
-  //   })
-  //   .catch(function(err) {
-  //   console.log('Where are my posts: ', err);
-  //   });
+  }
 
 }]);
 
