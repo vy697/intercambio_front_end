@@ -1,1 +1,71 @@
-<h1>LANDING</h1>
+<div class="landing">
+<div class="row">
+  <div class="col-lg-12 landing_title">
+    <h3 translate="landing_message"></h3><br>
+  </div>
+
+  <div class="col-lg-12" style="text-align: center">
+    <h4 style="display: inline"><a href="" ng-click="land.changeLanguage('en')">English</a></h4>
+    <h4 style="display: inline"><a href="" ng-click="land.changeLanguage('es')">Español</a></h4>
+  </div>
+
+  <div class="col-lg-4 col-lg-offset-4">
+  <form>
+    <div class="form-group">
+      <label translate="i_speak" for="user_speaks_language"></label>
+      <select class="form-control">
+        <option translate="en"></option>
+        <option translate="es"></option>
+        <option translate="fr"></option>
+        <option translate="por"></option>
+        <option translate="viet"></option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label translate="i_want_to_learn" for="user_learns_language"></label>
+      <select class="form-control">
+        <option translate="es"></option>
+        <option translate="en"></option>
+        <option translate="fr"></option>
+        <option translate="por"></option>
+        <option translate="viet"></option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label translate="city_label" for="city"></label>
+      <input type="text" class="form-control">
+    </div>
+    <button translate="search" type="button" class="btn btn-primary"></button>
+  </form>
+</div>
+
+<div class="row">
+  <div class="col-lg-12" style="text-align: center; margin-top: 1em;">
+    <h5 translate="tour" style="display: inline"></h5> <a translate="demo" href="#"></a>
+  </div>
+</div>
+
+
+
+
+<button ng-click="land.getExchanges()">See all exchanges</button>
+<h1>{{land.exchanges[0]}}</h1>
+
+<div class="row" ng-repeat="exchange in land.exchanges">
+  <div class="col-md-12">
+    <h2>{{exchange.user_name}}</h2>
+    <!-- <small>Link: <a href="#">{{post.url}}</a></small>
+    <h5>Post description:</h5>
+    <p>
+      {{post.description}}
+    </p>
+    <small>Posted by: {{post.username}} at {{post.posted_at}}</small></br>
+    <a href="#">GO TO POST</a>
+  </div> -->
+</div>
+
+
+
+
+</div>
+</div>

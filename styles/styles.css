@@ -1,0 +1,36 @@
+.header {
+  margin-bottom: 3em;
+}
+
+.header h4 {
+  display: inline;
+  float: right;
+  margin: .5em;
+}
+
+.header img {
+  height: 5em;
+  width: 10em;
+  position: relative;
+  left: 45em;
+}
+
+.footer {
+  height: 5em;
+  background-color: lightgrey;
+  margin-top: 10em;
+}
+
+.footer h4 {
+  display: inline;
+  margin: .5em;
+}
+
+.landing_title {
+  text-align: center;
+}
+
+.landing button {
+  position: relative;
+  left: 10em;
+}
