@@ -34,13 +34,28 @@ app.service('exchangeListService', ['$http', function($http) {
 
 }]);
 
-app.service('logoutService', ['$window', function($window) {
+app.service('logoutService', ['$window', '$location', function($window, $location) {
 
   var sv = this;
 
+  sv.showLogout = false;
+
+  sv.showLogOutFunc = function() {
+    if($window.sessionStorage.token) {
+      sv.showLogout = true;
+    } else {
+      sv.showLogout = false;
+    }
+  };
+
   sv.logout = function() {
     delete $window.sessionStorage.token;
-    sv.message = 'successfully logged out'; 
+
+    sv.showLogout = false; 
+
+    $location.url('/');
+
+    sv.message = 'successfully logged out';
   };
 
 }]);

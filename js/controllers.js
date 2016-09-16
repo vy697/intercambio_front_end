@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('landingController', ['localizeService', 'exchangeListService', '$translate', '$http', '$window', function(localizeService, exchangeListService, $translate, $http, $window) {
+app.controller('landingController', ['localizeService', 'exchangeListService', '$translate', '$http', '$window', '$location', function(localizeService, exchangeListService, $translate, $http, $window, $location) {
 
   var vm = this;
 
@@ -25,6 +25,9 @@ app.controller('landingController', ['localizeService', 'exchangeListService', '
     .then(function(result) {
       console.log('login result:', result);
       $window.sessionStorage.token = result.data.token;
+
+      $location.url('/home');
+
       vm.message = 'Login successful';
     })
     .catch(function(err) {
@@ -70,4 +73,33 @@ app.controller('signupController', ['$http', function($http) {
       console.log('SIGNUP ERROR:', err);
     });
   };
+}]);
+
+app.controller('profileController', [function() {
+
+  var vm = this;
+
+  vm.message = 'PROFILE CONTROLLER';
+
+}]);
+
+app.controller('homeController', [function() {
+
+  var vm = this;
+
+  vm.message = 'homeController!!'
+}]);
+
+app.controller('indexController', ['logoutService', function(logoutService) {
+
+
+  var vm = this;
+
+  logoutService.showLogOutFunc();
+
+  vm.logout = logoutService.logout;
+
+  vm.showLogout = logoutService.showLogout;
+
+
 }]);

@@ -27,6 +27,26 @@ app.config(['$routeProvider', function($routeProvider) {
     templateUrl: './templates/sign_up.html',
     controller: 'signupController',
     controllerAs: 'signup'
+  })
+  .when('/profile', {
+    templateUrl: './templates/profile.html',
+    controller: 'profileController',
+    controllerAs: 'pro'
+  })
+  .when('/home', {
+    templateUrl: './templates/home.html',
+    controller: 'homeController',
+    controllerAs: 'home'
+  })
+  .when('/messages', {
+    templateUrl: './templates/messages.html',
+    controller: 'messageController',
+    controllerAs: 'msg'
+  })
+  .when('/settings', {
+    templateUrl: './templates/settings.html',
+    controller: 'settingsController',
+    controllerAs: 'set'
   });
 }]);
 

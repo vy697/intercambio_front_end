@@ -33,5 +33,6 @@
   "online": "online",
   "lang_preference": "Idioma de cuenta",
   "all_exchanges": "Ver todos los intercambios disponibles",
-  "submit": "Enviar"
+  "submit": "Enviar",
+  "logout": "Cerrar sesión"
 }
