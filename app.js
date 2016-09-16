@@ -30,6 +30,24 @@ app.config(['$routeProvider', function($routeProvider) {
   });
 }]);
 
+app.factory('authInterceptor', ['$q', '$window', function($q, $window) {
+  return {
+    request: function(config) {
+      config.headers = config.headers || {};
+      if($window.sessionStorage.token) {
+        config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
+      }
+      return config;
+    },
+    response: function(response) {
+      if(response.status === 401) {
+        console.log('user is not authorized');
+      }
+      return response || $q.when(response);
+    }
+  };
+}]);
+
 app.filter('pair', function() {
   return function(data) {
       if(data){

@@ -33,3 +33,14 @@ app.service('exchangeListService', ['$http', function($http) {
   };
 
 }]);
+
+app.service('logoutService', ['$window', function($window) {
+
+  var sv = this;
+
+  sv.logout = function() {
+    delete $window.sessionStorage.token;
+    sv.message = 'successfully logged out'; 
+  };
+
+}]);

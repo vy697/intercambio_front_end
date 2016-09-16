@@ -3,15 +3,16 @@
     <div class="col-lg-12 header">
       <!-- LOGIN HERE -->
       <h4><a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login<span class="caret"></span></a></h4>
-      <h4><a href="#" translate="register"></a></h4>
+      <h4><a href="/#/signup" translate="register"></a></h4>
       <h4><a href="" ng-click="land.changeLanguage('en')">English</a></h4>
       <h4><a href="" ng-click="land.changeLanguage('es')">Español</a></h4>
     </div>
-    <div class="col-lg-2 col-lg-offset-10">
+    <div class="col-lg-2 col-lg-offset-6" style="float: right">
       <label for="email">Email</label>
-      <input type="text" class="form-control">
+      <input ng-model="land.email" type="text" class="form-control">
       <label translate="password" for="pw"></label>
-      <input type="password" class="form-control">
+      <input ng-model="land.password" type="password" class="form-control">
+      <button ng-click="land.login(land.email, land.password)" translate="submit" type="button" class="btn btn-primary"></button>
     </div>
   </div>
 
@@ -73,23 +74,11 @@
       <h5>{{exchange.city}}</h5>
     </div>
     <div class="col-lg-6 results">
-      <h5 translate="i_speak"></h5><p>{{exchange.speaks_language}} ({{exchange.speaks_language_level}})</p>
-      <h5 translate="i_want_to_learn"></h5><p>{{exchange.learns_language}} ({{exchange.learns_language_level}})</p>
+      <h5 translate="i_speak"></h5><p>{{exchange.speaks_language}} ({{exchange.speaks_level_name}})</p>
+      <h5 translate="i_want_to_learn"></h5><p>{{exchange.learns_language}} ({{exchange.learns_level}})</p>
       <h5 translate="exchange_type_preferred"></h5><p>{{exchange.pair | pair}} {{exchange.group | group}} {{exchange.online | online}}</p>
     </div>
   </div>
-  </div>
-
-<!-- <div class="col-md-12">
-  <h2>{{exchange.user_name}}</h2> -->
-  <!-- <small>Link: <a href="#">{{post.url}}</a></small>
-  <h5>Post description:</h5>
-  <p>
-    {{post.description}}
-  </p>
-  <small>Posted by: {{post.username}} at {{post.posted_at}}</small></br>
-  <a href="#">GO TO POST</a>
-</div> -->
-<!-- </div> -->
+</div>
 
 </div>
