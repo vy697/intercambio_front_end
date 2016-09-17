@@ -1,6 +1,12 @@
 /*.header {
   margin-bottom: 3em;
 }*/
+.landing {
+  background-image: url('../img/photo-1.jpeg');
+  background-size: 110em 60em;
+  height: 60em;
+  /*background-color: black;*/
+}
 
 .header h4 {
   display: inline;
@@ -30,9 +36,17 @@
   text-align: center;
 }
 
-.landing button {
+/*.landing .login_menu {
+  position: absolute;
+}*/
+
+.landing .login_menu div {
+  float: right;
+}
+
+.landing .login_menu button {
   position: relative;
-  left: 10em;
+  top: 1.7em;
 }
 
 .landing .results {

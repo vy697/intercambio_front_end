@@ -1,41 +1,37 @@
 'use strict';
 
-app.controller('landingController', ['localizeService', 'exchangeListService', '$translate', '$http', '$window', '$location', function(localizeService, exchangeListService, $translate, $http, $window, $location) {
+app.controller('landingController', ['logoutService', 'userService', 'loginService', 'localizeService', 'searchService', '$translate', '$http', '$window', '$location', function(logoutService, userService, loginService, localizeService, searchService, $translate, $http, $window, $location) {
 
   var vm = this;
 
+  vm.showLogin = false;
+
+  vm.showLoginFunc = function() {
+    if(!vm.showLogin) {
+      vm.showLogin = true;
+    } else {
+      vm.showLogin = false;
+    }
+  };
+
+  //on button clicks ng-click
   vm.changeLanguage = localizeService.changeLanguage;
-
-  vm.getExchanges = function() {
-    $http.get("http://localhost:3000/search")
-    .then(function(data) {
-      vm.exchanges = data.data;
-      console.log('THIS IS THE EXCHANGE DATA: ', vm.exchanges);
-    })
-    .catch(function(err) {
-      console.log('where is my data: ', err);
-    });
-  };
-
-  vm.login = function(email, password) {
-    return $http.post('http://localhost:3000/auth', {
-      email: email,
-      pw: password
-    })
-    .then(function(result) {
-      console.log('login result:', result);
-      $window.sessionStorage.token = result.data.token;
-
-      $location.url('/home');
-
-      vm.message = 'Login successful';
-    })
-    .catch(function(err) {
-      console.log('login error: ', err);
-      delete $window.sessionStorage.token;
-      vm.message = 'Not able to login'
-    });
-  };
+  //retrieve list of all users
+  vm.getExchanges = searchService.getExchanges;
+  //list of all users
+  vm.exchanges = searchService.exchanges;
+  //log user in
+  vm.login = loginService.login;
+  //if a user is logged in, retrieve their info
+  vm.getUserInfo = userService.getUserInfo();
+  //user information for logged in user saved here
+  vm.userData = userService.userData;
+  //localize page based on user's lang setting
+  localizeService.localizeForUser();
+  //shows welcome message on landing or not
+  logoutService.showLogOutFunc();
+  //state of logout(in this case for the welcome message) option (true/false)
+  vm.showLogout = logoutService.showLogout;
 
 }]);
 
@@ -44,7 +40,7 @@ app.controller('signupController', ['$http', function($http) {
   var vm = this;
 
   vm.submit = function(name, email, password, city, description, age, photo_url, pair, group, online, lang_preference, i_speak, i_learn, i_speak_level, i_learn_level) {
-    console.log(vm.name, vm.email, vm.password, vm.city, vm.description, vm.age, vm.photo_url, vm.pair, vm.group, vm.online, vm.lang_preference, vm.i_speak, vm.i_speak_level, vm.i_learn, vm.i_learn_level);
+    // console.log(vm.name, vm.email, vm.password, vm.city, vm.description, vm.age, vm.photo_url, vm.pair, vm.group, vm.online, vm.lang_preference, vm.i_speak, vm.i_speak_level, vm.i_learn, vm.i_learn_level);
     return $http.post('http://localhost:3000/signup', {
       name: name,
       email: email,
@@ -83,23 +79,28 @@ app.controller('profileController', [function() {
 
 }]);
 
-app.controller('homeController', [function() {
+app.controller('homeController', ['userService', 'localizeService', function(userService, localizeService) {
 
   var vm = this;
 
-  vm.message = 'homeController!!'
+  //if a user is logged in, retrieve their info
+  vm.getUserInfo = userService.getUserInfo();
+  //user information for logged in user saved here
+  vm.userData = userService.userData;
+  //localize page based on user's lang setting
+  localizeService.localizeForUser();
+
 }]);
 
 app.controller('indexController', ['logoutService', function(logoutService) {
 
-
   var vm = this;
 
+  //shows logout option or not
   logoutService.showLogOutFunc();
-
-  vm.logout = logoutService.logout;
-
+  //state of logout option (true/false)
   vm.showLogout = logoutService.showLogout;
-
+  //logs user out
+  vm.logout = logoutService.logout;
 
 }]);

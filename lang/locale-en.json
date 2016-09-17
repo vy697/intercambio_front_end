@@ -1,6 +1,7 @@
 {
   "landing_message": "get fluent in a foreign language. make friends. learn a new culture...all without leaving your city.",
   "register": "Sign Up",
+  "get_talking": "and get talking asap",
   "i_speak": "I speak..",
   "i_want_to_learn": "I want to learn..",
   "city_label": "City:",
@@ -34,5 +35,8 @@
   "lang_preference": "Account Language",
   "all_exchanges": "See All Available Exchanges",
   "submit": "Submit",
-  "logout": "Logout"
+  "logout": "Logout",
+  "login": "Login",
+  "hey": "Hey, ",
+  "welcome_back": "Welcome back"
 }

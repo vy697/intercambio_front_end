@@ -2,29 +2,34 @@
   <div class="row">
     <div class="col-lg-12 header">
       <!-- LOGIN HERE -->
-      <h4><a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login<span class="caret"></span></a></h4>
-      <h4><a href="/#/signup" translate="register"></a></h4>
-      <h4><a href="" ng-click="land.changeLanguage('en')">English</a></h4>
-      <h4><a href="" ng-click="land.changeLanguage('es')">Español</a></h4>
+      <h4>{{land.userData.data.user_name}}</h4><h4 style="display: inline" translate="hey" ng-show="land.showLogout"></h4>
+      <h4><a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" translate="login" ng-click="land.showLoginFunc()" ng-hide="land.showLogout"><span class="caret"></span></a></h4>
+      <!-- <h4><a href="/#/signup" translate="register"></a></h4> -->
+      <h4><a href="" ng-click="land.changeLanguage('en')" ng-hide="land.showLogout">English</a></h4>
+      <h4><a href="" ng-click="land.changeLanguage('es')" ng-hide="land.showLogout">Español</a></h4>
     </div>
-    <div class="col-lg-2 col-lg-offset-6" style="float: right">
-      <label for="email">Email</label>
-      <input ng-model="land.email" type="text" class="form-control">
-      <label translate="password" for="pw"></label>
-      <input ng-model="land.password" type="password" class="form-control">
+  </div>
+
+  <div class="row login_menu" ng-show="land.showLogin">
+    <!-- <div class="row"> -->
+    <div class="col-lg-1">
       <button ng-click="land.login(land.email, land.password)" translate="submit" type="button" class="btn btn-primary"></button>
     </div>
+    <div class="col-lg-2">
+      <label translate="password" for="pw"></label>
+      <input ng-model="land.password" type="password" class="form-control">
+    </div>
+    <div class="col-lg-2">
+      <label for="email">Email</label>
+      <input ng-model="land.email" type="text" class="form-control">
+    </div>
+    <!-- </div> -->
   </div>
 
 <div class="row">
   <div class="col-lg-12 landing_title">
     <h3 translate="landing_message"></h3><br>
   </div>
-
-  <!-- <div class="col-lg-12" style="text-align: center">
-    <h4 style="display: inline"><a href="" ng-click="land.changeLanguage('en')">English</a></h4>
-    <h4 style="display: inline"><a href="" ng-click="land.changeLanguage('es')">Español</a></h4>
-  </div> -->
 
   <div class="col-lg-4 col-lg-offset-4">
   <form>
@@ -52,7 +57,7 @@
       <label translate="city_label" for="city"></label>
       <input type="text" class="form-control">
     </div>
-    <button translate="search" type="button" class="btn btn-primary"></button>
+    <button translate="search" type="button" class="btn btn-primary btn-lg btn-block"></button>
   </form>
 
 </div>
@@ -60,6 +65,9 @@
 
 <div class="row">
   <div class="col-lg-12" style="text-align: center; margin-top: 1em;">
+
+    <h4 style="display: inline"><a href="/#/signup" translate="register"></a></h4><p style="display: inline"> <span translate="get_talking"></span><p>
+
     <h5 translate="tour" style="display: inline"></h5> <a translate="demo" href="#"></a>
     <h5 translate="or"></h5>
     <a href="" ng-click="land.getExchanges()" translate="all_exchanges"></a>
@@ -67,7 +75,7 @@
 </div>
 
 <div class="container">
-  <div class="row" ng-repeat="exchange in land.exchanges">
+  <div class="row" ng-repeat="exchange in land.exchanges.data">
     <div class="col-lg-3">
       <h4>{{exchange.user_name}}</h4>
       <img src="{{exchange.photo_url}}" alt="user profile photo" />

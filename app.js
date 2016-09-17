@@ -2,8 +2,30 @@
 
 var app = angular.module('intercambio', ['ngRoute', 'pascalprecht.translate']);
 
+app.factory('authInterceptor', ['$q', '$window', function($q, $window) {
+  return {
+    request: function(config) {
+      config.headers = config.headers || {};
+      if($window.sessionStorage.token) {
+        config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
+      }
+      return config;
+    },
+    response: function(response) {
+      if(response.status === 401) {
+        console.log('user is not authorized');
+      }
+      return response || $q.when(response);
+    }
+  };
+}]);
+
+app.config(['$httpProvider', function($httpProvider) {
+  $httpProvider.interceptors.push('authInterceptor');
+}]);
+
 app.config(['$translateProvider', function($translateProvider) {
-  $translateProvider.fallbackLanguage('en');
+  $translateProvider.fallbackLanguage('es');
   $translateProvider.registerAvailableLanguageKeys(['en', 'es'], {
     'en_*': 'en',
     'es_*': 'es'
@@ -12,7 +34,7 @@ app.config(['$translateProvider', function($translateProvider) {
     prefix: 'lang/locale-',
     suffix: '.json'
   });
-  $translateProvider.preferredLanguage('en');
+  $translateProvider.preferredLanguage('es');
   $translateProvider.useSanitizeValueStrategy(null);
 }]);
 
@@ -47,25 +69,11 @@ app.config(['$routeProvider', function($routeProvider) {
     templateUrl: './templates/settings.html',
     controller: 'settingsController',
     controllerAs: 'set'
+  })
+  .when('/search', {
+    templateUrl: './templates/search.html',
+    controllerAs: 'search'
   });
-}]);
-
-app.factory('authInterceptor', ['$q', '$window', function($q, $window) {
-  return {
-    request: function(config) {
-      config.headers = config.headers || {};
-      if($window.sessionStorage.token) {
-        config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
-      }
-      return config;
-    },
-    response: function(response) {
-      if(response.status === 401) {
-        console.log('user is not authorized');
-      }
-      return response || $q.when(response);
-    }
-  };
 }]);
 
 app.filter('pair', function() {
