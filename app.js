@@ -72,6 +72,7 @@ app.config(['$routeProvider', function($routeProvider) {
   })
   .when('/search', {
     templateUrl: './templates/search.html',
+    controller: 'searchController',
     controllerAs: 'search'
   });
 }]);

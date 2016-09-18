@@ -32,6 +32,12 @@ app.controller('landingController', ['logoutService', 'userService', 'loginServi
   logoutService.showLogOutFunc();
   //state of logout(in this case for the welcome message) option (true/false)
   vm.showLogout = logoutService.showLogout;
+  //list of user's language exchange matches
+  vm.searchResults = searchService.searchResults;
+  //ng-click to retrieve matches based on user inputs
+  vm.findMatches = searchService.findMatches;
+  //localize page based on user's lang setting
+
 
 }]);
 
@@ -102,5 +108,18 @@ app.controller('indexController', ['logoutService', function(logoutService) {
   vm.showLogout = logoutService.showLogout;
   //logs user out
   vm.logout = logoutService.logout;
+
+}]);
+
+app.controller('searchController', ['searchService', 'localizeService', function(searchService, localizeService) {
+
+  var vm = this;
+
+  //list of user's language exchange matches
+  vm.searchResults = searchService.searchResults;
+  //ng-click to retrieve matches based on user inputs
+  vm.findMatches = searchService.findMatches;
+  //localize page based on user's lang setting
+  localizeService.localizeForUser();
 
 }]);

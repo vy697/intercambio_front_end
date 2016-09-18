@@ -35,6 +35,17 @@ app.service('searchService', ['$http', function($http) {
     });
   };
 
+  sv.searchResults = {};
+
+  sv.findMatches = function(i_speak, i_learn, city) {
+    console.log('findMatches invoked', i_speak, i_learn, city);
+    $http.get('http://localhost:3000/search/results', {params:{"i_speak": i_speak, "i_learn": i_learn, "city": city}})
+    .then(function(data) {
+      sv.searchResults.data = data.data;
+      console.log(data);
+    });
+  };
+
 }]);
 
 app.service('userService', ['$http', '$window', function($http, $window) {
