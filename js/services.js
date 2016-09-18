@@ -42,7 +42,7 @@ app.service('searchService', ['$http', function($http) {
     $http.get('http://localhost:3000/search/results', {params:{"i_speak": i_speak, "i_learn": i_learn, "city": city}})
     .then(function(data) {
       sv.searchResults.data = data.data;
-      console.log(data);
+      // console.log(data);
     });
   };
 

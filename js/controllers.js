@@ -32,12 +32,25 @@ app.controller('landingController', ['logoutService', 'userService', 'loginServi
   logoutService.showLogOutFunc();
   //state of logout(in this case for the welcome message) option (true/false)
   vm.showLogout = logoutService.showLogout;
+
   //list of user's language exchange matches
   vm.searchResults = searchService.searchResults;
   //ng-click to retrieve matches based on user inputs
-  vm.findMatches = searchService.findMatches;
-  //localize page based on user's lang setting
+  vm.findMatches = function(i_speak, i_learn, city) {
+    $http.get('http://localhost:3000/search/results', {params:{"i_speak": i_speak, "i_learn": i_learn, "city": city}})
+    .then(function(data) {
+      console.log('findMatches on landing: ', data);
+      searchService.searchResults.data = data.data;
+      $location.url('/search');
+    })
+    .catch(function(err) {
+      console.log('findMatches err on landing: ', err);
+    });
+  };
 
+
+  //localize page based on user's lang setting
+  localizeService.localizeForUser();
 
 }]);
 
@@ -117,8 +130,21 @@ app.controller('searchController', ['searchService', 'localizeService', function
 
   //list of user's language exchange matches
   vm.searchResults = searchService.searchResults;
+  // vm.searchResults = {};
+
   //ng-click to retrieve matches based on user inputs
   vm.findMatches = searchService.findMatches;
+  // vm.findMatches = function(i_speak, i_learn, city) {
+  //   searchService.findMatches(i_speak, i_learn, city)
+  //   .then(function(data) {
+  //     vm.searchResults.data = data.data;
+  //     console.log(data);
+  //   })
+  //   .catch(function(err) {
+  //     console.log('findMatches err: ', err);
+  //   });
+  // };
+
   //localize page based on user's lang setting
   localizeService.localizeForUser();
 
