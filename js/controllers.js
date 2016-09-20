@@ -58,12 +58,15 @@ app.controller('signupController', ['searchService', '$http', '$window', functio
 
   var vm = this;
 
-  vm.cityList = searchService.cityList; 
+  //list of cities are stored here to be accessed in the view in the select box
+  vm.cityList = searchService.cityList;
+  console.log('vm.cityList: ', vm.citylist);
 
+  //retrieve cities upon going to view
   vm.getCities = searchService.getCities();
 
   vm.submit = function(name, email, password, city, description, age, photo_url, pair, group, online, lang_preference, i_speak, i_learn, i_speak_level, i_learn_level) {
-    // console.log(vm.name, vm.email, vm.password, vm.city, vm.description, vm.age, vm.photo_url, vm.pair, vm.group, vm.online, vm.lang_preference, vm.i_speak, vm.i_speak_level, vm.i_learn, vm.i_learn_level);
+    console.log(vm.name, vm.email, vm.password, vm.city, vm.description, vm.age, vm.photo_url, vm.pair, vm.group, vm.online, vm.lang_preference, vm.i_speak, vm.i_speak_level, vm.i_learn, vm.i_learn_level);
     return $http.post('http://localhost:3000/signup', {
       name: name,
       email: email,
@@ -89,6 +92,7 @@ app.controller('signupController', ['searchService', '$http', '$window', functio
       console.log('ANGULAR SIGNUP RESULT: ', result);
     })
     .catch(function(err) {
+      err.statusText = "Unable to sign up";
       console.log('SIGNUP ERROR:', err);
     });
   };

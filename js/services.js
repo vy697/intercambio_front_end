@@ -27,8 +27,8 @@ app.service('searchService', ['$http', '$window', function($http, $window) {
   sv.getCities = function() {
       $http.get('http://localhost:3000/search/cities/en')
       .then(function(data) {
-        console.log('english cities data: ', data);
-        // sv.cityList.data = data.data;
+        // console.log('english cities data: ', data);
+        sv.cityList.data = data.data;
       })
       .catch(function(err) {
         console.log('english cities err:', err);

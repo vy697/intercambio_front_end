@@ -19,7 +19,9 @@
         <input ng-model="signup.password_2" type="text" class="form-control">
 
         <label translate="city_label"></label>
-        <input ng-model="signup.city" type="text" class="form-control">
+        <select ng-model="signup.city" class="form-control">
+          <option ng-repeat="city in signup.cityList.data" value="{{city.display_name}}">{{city.display_name}}</option>
+        </select>
 
         <label translate="about_me"></label>
         <textarea ng-model="signup.description" class="form-control" rows="3"></textarea>
