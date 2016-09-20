@@ -25,7 +25,7 @@ app.config(['$httpProvider', function($httpProvider) {
 }]);
 
 app.config(['$translateProvider', function($translateProvider) {
-  $translateProvider.fallbackLanguage('es');
+  $translateProvider.fallbackLanguage('en');
   $translateProvider.registerAvailableLanguageKeys(['en', 'es'], {
     'en_*': 'en',
     'es_*': 'es'
@@ -34,7 +34,7 @@ app.config(['$translateProvider', function($translateProvider) {
     prefix: 'lang/locale-',
     suffix: '.json'
   });
-  $translateProvider.preferredLanguage('es');
+  $translateProvider.preferredLanguage('en');
   $translateProvider.useSanitizeValueStrategy(null);
 }]);
 
@@ -77,13 +77,18 @@ app.config(['$routeProvider', function($routeProvider) {
   });
 }]);
 
+// app.config(['$window', function($window) {
 app.filter('pair', function() {
   return function(data) {
-      if(data){
-        return '•pair';
+    if(data){
+      return '•pair';
       }
+    // if($window.sessionStorage.lang_preference === 'es' && data) {
+    //   return '•en pareja';
+    //   }
     };
   });
+// }]);
 
 app.filter('group', function() {
   return function(data) {

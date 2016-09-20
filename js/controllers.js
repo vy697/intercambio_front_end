@@ -54,9 +54,13 @@ app.controller('landingController', ['logoutService', 'userService', 'loginServi
 
 }]);
 
-app.controller('signupController', ['$http', function($http) {
+app.controller('signupController', ['searchService', '$http', '$window', function(searchService, $http, $window) {
 
   var vm = this;
+
+  vm.cityList = searchService.cityList; 
+
+  vm.getCities = searchService.getCities();
 
   vm.submit = function(name, email, password, city, description, age, photo_url, pair, group, online, lang_preference, i_speak, i_learn, i_speak_level, i_learn_level) {
     // console.log(vm.name, vm.email, vm.password, vm.city, vm.description, vm.age, vm.photo_url, vm.pair, vm.group, vm.online, vm.lang_preference, vm.i_speak, vm.i_speak_level, vm.i_learn, vm.i_learn_level);
