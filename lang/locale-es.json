@@ -38,5 +38,6 @@
   "logout": "Cerrar sesión",
   "login": "Login",
   "hey": "Hola, ",
-  "welcome_back": "Hola de nuevo,"
+  "welcome_back": "Hola de nuevo,",
+  "language": "Idioma: "
 }

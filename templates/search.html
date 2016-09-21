@@ -24,25 +24,30 @@
     </div>
     <div class="col-lg-3 form-group">
       <label translate="city_label" for="city"></label>
-      <input ng-model="search.city" type="text" class="form-control">
+      <select ng-model="search.city" class="form-control">
+        <option ng-repeat="city in search.cityList.data" value="{{city.display_name}}">{{city.display_name}}</option>
+      </select>
     </div>
     <div class="col-lg-2">
-    <label style="color: white; display: block" for="">block</label>
-    <button ng-click="search.findMatches(search.i_speak, search.i_learn, search.city)" translate="search" type="button" class="btn btn-primary"></button>
+      <label style="color: white; display: block" for="">block</label>
+      <button ng-click="search.findMatches(search.i_speak, search.i_learn, search.city)" translate="search" type="button" class="btn btn-primary"></button>
     </div>
   </form>
 
   <div class="container">
     <div class="row" ng-repeat="exchange in search.searchResults.data">
+
       <div class="col-lg-3">
         <h4>{{exchange.user_name}}</h4>
         <img src="{{exchange.photo_url}}" alt="user profile photo" />
         <h5>{{exchange.city}}</h5>
       </div>
+
       <div class="col-lg-6 results">
         <h5 translate="i_speak"></h5><p>{{exchange.speaks_language}} ({{exchange.speaks_level_name}})</p>
         <h5 translate="i_want_to_learn"></h5><p>{{exchange.learns_language}} ({{exchange.learns_level}})</p>
         <h5 translate="exchange_type_preferred"></h5><p>{{exchange.pair | pair}} {{exchange.group | group}} {{exchange.online | online}}</p>
+
       </div>
     </div>
   </div>

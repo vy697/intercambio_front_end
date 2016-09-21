@@ -4,6 +4,9 @@ app.controller('landingController', ['logoutService', 'userService', 'loginServi
 
   var vm = this;
 
+  //language keys are stored here
+  vm.keys = localizeService.keys;
+
   vm.showLogin = false;
 
   vm.showLoginFunc = function() {
@@ -37,7 +40,17 @@ app.controller('landingController', ['logoutService', 'userService', 'loginServi
   vm.searchResults = searchService.searchResults;
   //ng-click to retrieve matches based on user inputs
   vm.findMatches = function(i_speak, i_learn, city) {
-    $http.get('http://localhost:3000/search/results', {params:{"i_speak": i_speak, "i_learn": i_learn, "city": city}})
+    var lang_preference;
+
+    if($window.sessionStorage.lang_preference) {
+      lang_preference = $window.sessionStorage.lang_preference;
+    //request here with whatever lang_preference is in localStorage
+    } else if (localStorage.lang_preference) {
+      lang_preference = localStorage.lang_preference;
+    } else {
+      lang_preference = 'en';
+    }
+    $http.get('http://localhost:3000/search/results', {params:{"i_speak": i_speak, "i_learn": i_learn, "city": city, "lang_preference": lang_preference}})
     .then(function(data) {
       console.log('findMatches on landing: ', data);
       searchService.searchResults.data = data.data;
@@ -48,15 +61,22 @@ app.controller('landingController', ['logoutService', 'userService', 'loginServi
     });
   };
 
-
-  //localize page based on user's lang setting
-  localizeService.localizeForUser();
+  //retrieve cities upon going to view
+  vm.getCities = searchService.getCities();
+  //list of cities are stored here to be accessed in the view in the select box
+  vm.cityList = searchService.cityList;
 
 }]);
 
-app.controller('signupController', ['searchService', '$http', '$window', function(searchService, $http, $window) {
+app.controller('signupController', ['localizeService', 'searchService', '$http', '$window', function(localizeService, searchService, $http, $window) {
 
   var vm = this;
+
+  //set language keys are stored here
+  vm.keys = localizeService.keys;
+  vm.key = localizeService.key;
+  //localize page based on user's lang setting
+  localizeService.localizeForUser();
 
   //list of cities are stored here to be accessed in the view in the select box
   vm.cityList = searchService.cityList;
@@ -112,8 +132,10 @@ app.controller('homeController', ['userService', 'localizeService', function(use
 
   //if a user is logged in, retrieve their info
   vm.getUserInfo = userService.getUserInfo();
+
   //user information for logged in user saved here
   vm.userData = userService.userData;
+
   //localize page based on user's lang setting
   localizeService.localizeForUser();
 
@@ -125,8 +147,10 @@ app.controller('indexController', ['logoutService', function(logoutService) {
 
   //shows logout option or not
   logoutService.showLogOutFunc();
+
   //state of logout option (true/false)
   vm.showLogout = logoutService.showLogout;
+
   //logs user out
   vm.logout = logoutService.logout;
 
@@ -136,24 +160,24 @@ app.controller('searchController', ['searchService', 'localizeService', function
 
   var vm = this;
 
+  //retrieve cities upon going to view
+  vm.getCities = searchService.getCities();
+  //list of cities are stored here to be accessed in the view in the select box
+  vm.cityList = searchService.cityList;
+
   //list of user's language exchange matches
   vm.searchResults = searchService.searchResults;
-  // vm.searchResults = {};
 
   //ng-click to retrieve matches based on user inputs
   vm.findMatches = searchService.findMatches;
-  // vm.findMatches = function(i_speak, i_learn, city) {
-  //   searchService.findMatches(i_speak, i_learn, city)
-  //   .then(function(data) {
-  //     vm.searchResults.data = data.data;
-  //     console.log(data);
-  //   })
-  //   .catch(function(err) {
-  //     console.log('findMatches err: ', err);
-  //   });
-  // };
+
+  //set language keys are stored here
+  vm.keys = localizeService.keys;
 
   //localize page based on user's lang setting
   localizeService.localizeForUser();
+  //language keys are stored here
+  vm.keys = localizeService.keys;
+  vm.key = localizeService.key;
 
 }]);

@@ -4,15 +4,33 @@ app.service('localizeService', ['$translate', '$window', function($translate, $w
 
   var sv = this;
 
+  //store lang keys here
+  sv.keys = {
+    en: 'en',
+    es: 'es'
+  };
+
   sv.localizeForUser = function(key) {
+
+    console.log('localStorage', localStorage.lang_preference);
+    //user's language settings determine the language of the session
     if($window.sessionStorage.token) {
       key = $window.sessionStorage.lang_preference;
       $translate.use(key);
+    //if a user's not logged in, save whatever they chose to localStorage, if they happened to change the language from default English
+  } else if(localStorage.lang_preference){
+      key = localStorage.lang_preference;
+      $translate.use(key);
+    } else if(!$window.sessionStorage.token && !localStorage.lang_preference) {
+      localStorage.setItem('lang_preference', 'en');
     }
   };
 
+  //THIS WORKS, IT GRABS THE KEY
   sv.changeLanguage = function(key) {
     $translate.use(key);
+    //when default lang settings change, store it in local storage so that the setting persists
+    localStorage.setItem('lang_preference', key);
   };
 
 }]);
@@ -25,34 +43,40 @@ app.service('searchService', ['$http', '$window', function($http, $window) {
   sv.cityList = {};
 
   sv.getCities = function() {
-      $http.get('http://localhost:3000/search/cities/en')
+    var lang_preference;
+
+    if($window.sessionStorage.lang_preference) {
+      lang_preference = $window.sessionStorage.lang_preference;
+    //request here with whatever lang_preference is in localStorage
+    } else if (localStorage.lang_preference) {
+      lang_preference = localStorage.lang_preference;
+    } else {
+      lang_preference = 'en';
+    }
+      $http.get('http://localhost:3000/search/cities', {params:{"lang_preference": lang_preference}})
       .then(function(data) {
-        // console.log('english cities data: ', data);
+        console.log('cities data: ', data);
         sv.cityList.data = data.data;
       })
       .catch(function(err) {
-        console.log('english cities err:', err);
+        console.log('cities err:', err);
       });
     };
-
-  //TODO: set for specific languages
-  // sv.getCities = function() {
-  //   if($window.sessionStorage.lang_preference === 'en') {
-  //     $http.get('http://localhost:3000/search/cities/en')
-  //     .then(function(data) {
-  //       console.log('english cities data: ', data);
-  //       // sv.cityList.data = data.data;
-  //     })
-  //     .catch(function(err) {
-  //       console.log('english cities err:', err);
-  //     });
-  //   }
-  // };
 
   sv.exchanges = {};
 
   sv.getExchanges = function() {
-    $http.get("http://localhost:3000/search")
+    var lang_preference;
+
+    if($window.sessionStorage.lang_preference) {
+      lang_preference = $window.sessionStorage.lang_preference;
+    //request here with whatever lang_preference is in localStorage
+    } else if (localStorage.lang_preference) {
+      lang_preference = localStorage.lang_preference;
+    } else {
+      lang_preference = 'en';
+    }
+    $http.get("http://localhost:3000/search", {params:{"lang_preference": lang_preference}})
     .then(function(data) {
       sv.exchanges.data = data.data;
       console.log('THIS IS THE EXCHANGE DATA: ', sv.exchanges);
@@ -63,49 +87,24 @@ app.service('searchService', ['$http', '$window', function($http, $window) {
   };
 
   sv.searchResults = {};
-  //store Spanish strings here
-  sv.lang_preferenceES = {};
 
   sv.findMatches = function(i_speak, i_learn, city) {
 
     console.log('findMatches invoked', i_speak, i_learn, city);
-    $http.get('http://localhost:3000/search/results', {params:{"i_speak": i_speak, "i_learn": i_learn, "city": city}})
+    var lang_preference;
+
+    if($window.sessionStorage.lang_preference) {
+      lang_preference = $window.sessionStorage.lang_preference;
+    //request here with whatever lang_preference is in localStorage
+    } else if (localStorage.lang_preference) {
+      lang_preference = localStorage.lang_preference;
+    } else {
+      lang_preference = 'en';
+    }
+    $http.get('http://localhost:3000/search/results', {params:{"i_speak": i_speak, "i_learn": i_learn, "city": city, "lang_preference": lang_preference}})
     .then(function(data) {
-      //if session is in English data stays as is (in English)
       sv.searchResults.data = data.data;
       console.log('initial searchResults data:' , data);
-
-
-      // var exchangeList = sv.searchResults.data.data;
-      // if it's in another language change the values that need to be translated
-      // TODO: commented out first intent at switch language upon data retrieval starts here
-      // if($window.sessionStorage.lang_preference === 'es') {
-      //   $http.get('../lang/locale-es.json')
-      //   .then(function(data) {
-      //     console.log('locale-es data: ', data);
-      //     sv.lang_preferenceES.data = data;
-      //     //loop through the array of objects
-      //     for(var i = 0; i < sv.searchResults.data.length; i++) {
-      //       //loop through each obj and change appropriate values: city, languages
-      //       for (var user_detail in sv.searchResults.data[i]) {
-      //         console.log('sv.searchResults.data[i]', sv.searchResults.data[i]);
-      //         console.log('user_detail:', user_detail);
-      //         if(user_detail === 'learns_language') {
-      //
-      // //           //TODO: how to switch the values? error: Cannot create property 'learns_language' on string 'learns_language'
-      //           user_detail.learns_language = sv.lang_preferenceES.data.data.en;
-      //         }
-      //
-      //       }
-      //     }
-      //   })
-      //   .catch(function(err) {
-      //     console.log('update language err:', err);
-      //   });
-      // }
-
-
-
     })
     .catch(function(err) {
       console.log('search results err: ', err);
