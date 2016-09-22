@@ -1,9 +1,13 @@
 <div class="search">
   <!-- <div class="col-lg-3"> -->
-  <form>
+  <form name="search.form">
     <div class="col-lg-3 form-group">
       <label translate="i_speak" for="i_speak"></label>
-      <select ng-model="search.i_speak" class="form-control">
+      <select
+          name="i_speak"
+          ng-model="search.i_speak"
+          class="form-control"
+          required>
         <option value="1" translate="en" selected></option>
         <option value="2" translate="es"></option>
         <option value="3" translate="fr"></option>
@@ -14,7 +18,11 @@
   <!-- </div> -->
     <div class="col-lg-3 form-group">
       <label translate="i_want_to_learn" for="i_learn"></label>
-      <select ng-model="search.i_learn" class="form-control">
+      <select
+          name="i_learn"
+          ng-model="search.i_learn"
+          class="form-control"
+          required>
         <option value="1" translate="en" selected></option>
         <option value="2" translate="es"></option>
         <option value="3" translate="fr"></option>
@@ -24,7 +32,11 @@
     </div>
     <div class="col-lg-3 form-group">
       <label translate="city_label" for="city"></label>
-      <select ng-model="search.city" class="form-control">
+      <select
+          name="city"
+          ng-model="search.city"
+          class="form-control"
+          required>
         <option ng-repeat="city in search.cityList.data" value="{{city.display_name}}">{{city.display_name}}</option>
       </select>
     </div>
@@ -32,25 +44,34 @@
       <label style="color: white; display: block" for="">block</label>
       <button ng-click="search.findMatches(search.i_speak, search.i_learn, search.city)" translate="search" type="button" class="btn btn-primary"></button>
     </div>
+    <h4>{{search.errorMessage}}</h4>
   </form>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <h3>{{search.searchResults.message}}</h3>
+      <!-- <h3>{{search.message}}</h3>
+      <h3 ng-show="search.yesMatches">YES</h3>
+      <h3 ng-show="search.noMatches">NO</h3> -->
+    </div>
+  </div>
 
   <div class="container">
     <div class="row" ng-repeat="exchange in search.searchResults.data">
 
       <div class="col-lg-3">
-        <h4>{{exchange.user_name}}</h4>
+        <h4>{{exchange.name}}</h4>
         <img src="{{exchange.photo_url}}" alt="user profile photo" />
-        <h5>{{exchange.city}}</h5>
+        <h5>{{exchange.translated_location}}</h5>
       </div>
 
       <div class="col-lg-6 results">
-        <h5 translate="i_speak"></h5><p>{{exchange.speaks_language}} ({{exchange.speaks_level_name}})</p>
-        <h5 translate="i_want_to_learn"></h5><p>{{exchange.learns_language}} ({{exchange.learns_level}})</p>
+        <h5 translate="i_speak"></h5><p>{{exchange.speaks_language_display_name}} ({{exchange.speaks_level_display_name}})</p>
+        <h5 translate="i_want_to_learn"></h5><p>{{exchange.learns_language_display_name}} ({{exchange.learns_level_display_name}})</p>
         <h5 translate="exchange_type_preferred"></h5><p>{{exchange.pair | pair}} {{exchange.group | group}} {{exchange.online | online}}</p>
 
       </div>
     </div>
   </div>
 
-</div>
 </div>

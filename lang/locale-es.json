@@ -25,7 +25,7 @@
   "intermediate": "Intermedio",
   "advanced": "Avanzado",
   "native": "Nativo",
-  "about_me": "Sobre mí",
+  "about_me": "Comentarios:",
   "age": "Edad",
   "photo_url": "Enlace de foto",
   "exchange_type_preferred": "Preferencia de intercambio:",
@@ -38,6 +38,10 @@
   "logout": "Cerrar sesión",
   "login": "Login",
   "hey": "Hola, ",
-  "welcome_back": "Hola de nuevo,",
-  "language": "Idioma: "
+  "welcome_back": "Hola de nuevo,{{username}}",
+  "language": "Idioma: ",
+  "message_notification": "Tienes {{message_num}} mensaje(s) nuevos",
+  "user_suggestions": "Nuestras sugerencias de intercambios de {{learns_language}} en {{city}}",
+  "search_results": "Resultados de intercambios de {{learns_language}} en {{city}}",
+  "no_results": "¡Maldita sea! No hay intercambios disponibles."
 }
