@@ -1,5 +1,7 @@
 {
   "landing_message": "get fluent in a foreign language. make friends. learn a new culture...all without leaving your city.",
+  "landing_quote": "“If you talk to a man in a language he understands, that goes to his head.  If you talk to him in his language, that goes to his heart.”",
+  "no_account": "Don't have an account?",
   "register": "Sign Up",
   "get_talking": "and get talking asap",
   "i_speak": "I speak..",
@@ -37,11 +39,13 @@
   "submit": "Submit",
   "logout": "Logout",
   "login": "Login",
-  "hey": "Hey, ",
+  "hey": "Hey, {{user}}",
   "welcome_back": "Welcome back, {{username}}",
   "language": "Language: ",
   "message_notification": "You have {{message_num}} new message(s)",
   "user_suggestions": "Our recommendations for {{learns_language}} exchanges in {{city}}",
   "search_results": "Results for {{learns_language}} exchanges in {{city}}",
-  "no_results": "Ahh shucks. Your search didn't return any results."
+  "no_results": "Ahh shucks. Your search didn't return any results.",
+  "message: ": "Message {{user}}",
+  "go_back": "Go back to search results"
 }

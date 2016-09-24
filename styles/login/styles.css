@@ -1,0 +1,42 @@
+/* login */
+
+form {
+  margin-top: 13em;
+  margin-left: -5em;
+
+}
+
+.login input {
+  height: 3em;
+  width: 23em;
+}
+
+.login {
+  font-family: 'Roboto';
+  margin-top: 3em;
+  background-color: #F2Af29;
+  background: #ffe711;
+  background: -moz-linear-gradient(top,  #ffe711 0%, #ff9501 98%);
+  background: -webkit-linear-gradient(top,  #ffe711 0%,#ff9501 98%);
+  background: linear-gradient(to bottom,  #ffe711 0%,#ff9501 98%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffe711', endColorstr='#ff9501',GradientType=0 );
+}
+
+.login_signin {
+  height: 40em;
+  border-right: 1px solid black;
+}
+
+.login_signup {
+  margin-top: 16em;
+  margin-left: 5em;
+  text-align: center;
+
+}
+
+.login button {
+  margin-top: 2em;
+  color: black;
+  width: 23em;
+
+}

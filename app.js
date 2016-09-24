@@ -45,6 +45,11 @@ app.config(['$routeProvider', function($routeProvider) {
     controller: 'landingController',
     controllerAs: 'land'
   })
+  .when('/login', {
+    templateUrl: './templates/login.html',
+    controller: 'loginController',
+    controllerAs: 'login'
+  })
   .when('/signup', {
     templateUrl: './templates/sign_up.html',
     controller: 'signupController',

@@ -1,0 +1,33 @@
+<!-- <div class="login"> -->
+  <div class="row login">
+
+    <div class="col-lg-3 col-lg-offset-3 login_signin">
+      <form>
+        <label for="email">Email</label><br>
+        <input ng-model="login.email" type="text"><br>
+        <label translate="password" for="pw"></label><br>
+        <input ng-model="login.password" type="password"><br>
+        <button ng-click="login.login(login.email, login.password)" translate="submit" type="button" class="btn btn-block"></button>
+      <!-- button copied and pasted from boostrap, doesn't work whyyy -->
+      <!-- <button type="button" class="btn btn-outline-danger">Danger</button> -->
+      </form>
+    </div>
+
+    <div class="col-lg-3 login_signup">
+      <h4 translate="no_account"></h4>
+      <h4 style="display: inline"><a href="/#/signup" translate="register"></a></h4><p style="display: inline"> <span translate="get_talking"></span><p>
+      <h5 translate="tour" style="display: inline"></h5> <a translate="demo" href="#"></a>
+    </div>
+
+  </div>
+<!-- </div> -->
+
+<div class="row footer">
+
+  <div class="col-lg-12">
+    <h4><a href="http://linkedin.com/in/vy-phuong-nguyen" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></h4>
+    <h4><a href="https://github.com/vy697" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></h4>
+    <h4><a href="#">about</a></h4>
+  </div>
+
+</div>

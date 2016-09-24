@@ -1,0 +1,181 @@
+/*landing*/
+
+.landing .jumbotron {
+  background-image: url('/../img/jumbotron_img3.png');
+  background-image: radial-gradient();
+  background-size: 100%;
+  height: 63%;
+  width: 85%;
+  margin-top: 3em;
+  margin-bottom: 4em;
+}
+
+.landing {
+  height: 80em;
+}
+
+.landing .header {
+  border-bottom: 1px solid black;
+}
+
+.header h4 {
+  display: inline;
+  float: right;
+  margin: .5em;
+  font-family: 'Roboto';
+  font-size: 2em;
+  color: #AD343E;
+}
+
+.header a {
+  color: #AD343E;
+}
+
+.header h4 button {
+   font-size: .9em;
+   position: relative;
+   bottom: .4em;
+}
+
+.header img {
+  margin-top: .5em;
+  height: 5em;
+  width: 10em;
+}
+
+.line-separator {
+  height:1px;
+  width: 70%;
+  background:#717171;
+  border-bottom:1px solid #313030;
+}
+
+.landing_title {
+  text-align: center;
+}
+
+.landing_title h3 {
+  font-family: 'Roboto';
+  margin-top: 3em;
+}
+
+.landing .text_div {
+  font-family: 'Roboto';
+  margin-bottom: 6em;
+}
+
+.landing form {
+  margin-top: 2em;
+}
+
+.landing label {
+  font-family: 'Shadows Into Light Two';
+  font-size: large;
+}
+
+.landing button {
+  font-family: 'Roboto';
+  font-size: large;
+/*   background-color: #AD343E; */
+}
+
+.landing .login_menu div {
+  float: right;
+}
+
+.landing .login_menu
+
+ {
+  position: relative;
+  top: 1.7em;
+}
+
+.landing .results {
+  margin-top: 3em;
+}
+
+.landing .results h5 {
+  display: inline;
+}
+
+.landing img {
+  height: 13em;
+  width: 13em;
+}
+
+.landing select {
+  font-family: 'Roboto';
+}
+
+.landing .quote {
+  font-family: 'Anton';
+  color: white;
+  height: 45em;
+  border-radius: 1em;
+  margin-top: 4.5em;
+  background: #ffe711;
+  background: -moz-linear-gradient(top,  #ffe711 0%, #ff9501 98%);
+  background: -webkit-linear-gradient(top,  #ffe711 0%,#ff9501 98%);
+  background: linear-gradient(to bottom,  #ffe711 0%,#ff9501 98%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffe711', endColorstr='#ff9501',GradientType=0 );
+}
+
+.container-fluid .quote {
+   margin-top: 7em;
+   margin-bottom: 7em;
+}
+
+.landing .quote h2 {
+  font-size: 5em;
+  margin-top: 2em;
+}
+
+.landing .quote h3 {
+  margin-top: 1.5em;
+  float: right;
+}
+
+.blurb_div {
+  margin-top: 8em;
+  text-align: center;
+  border-bottom: 2px solid black;
+}
+
+.blurbs {
+  height: 40em;
+  width: 30em;
+  text-align: center;
+}
+
+.blurbs img {
+  height: 18em;
+  width: 25em;
+}
+
+.blurbs h1 {
+  font-family:'Shadows Into Light Two';
+}
+
+.blurb_article {
+  font-family: 'Roboto';
+  font-size: 1em;
+}
+
+.footer {
+  height: 9em;
+  margin-top: em;
+}
+
+.footer h4 {
+  display: inline;
+  margin: .5em;
+  font-family: 'Roboto';
+  font-size: 2.8em;
+}
+
+.footer a {
+  text-decoration: none;
+  float: right;
+  margin: .5em;
+
+}

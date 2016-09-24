@@ -12,5 +12,179 @@
     <div class="col-lg-2">
       <a href="" class="home_icons"><i class="fa fa-user" aria-hidden="true"></i></a>
     </div>
+
+  <div class="container">
+    <div class="row">
+
+      <h2>Wanna change anything on your profile?</h2>
+      <a href="#">Edit your account</a>
+
+      <!-- TODO: toggle here from edit your account link  ng-show="set.showForm = !set.showForm"-->
+      <div class="col-lg-4">
+        <form name="set.form">
+          <div class="form-group">
+            <label translate="name"></label>
+            <input
+            ng-class="{invalid: set.form.name.$invalid}"
+            name="name"
+            ng-model="set.userData.data.name"
+            type="text"
+            class="form-control"
+            ng-minlength=2
+            ng-maxlength=20
+            value="set.name"
+            required>
+            <small ng-show="set.form.name.$error.required">{{set.errorMessage.name_required}}</small>
+            <small ng-show="set.form.name.$touched && set.form.name.$error.minlength">{{set.errorMessage.name_length}}</small>
+
+            <label translate="email"></label>
+            <input
+            name="email"
+            ng-model="set.userData.data.email"
+            type="email"
+            class="form-control"
+            required>
+            <small ng-show="set.form.email.$error.required">{{set.errorMessage.email_required}}</small>
+            <small ng-show="set.form.email.$error.email">{{set.errorMessage.email_valid}}</small>
+
+            <!-- <label translate="password"></label>
+            <input
+            name="password"
+            ng-model="set.userData.data.password"
+            type="password"
+            class="form-control"
+            ng-minlength=6
+            ng-maxlength=20
+            ng-pattern="/^(?=.*\d)[a-z\d]*$/i"
+            required>
+            <small ng-show="set.form.password.$error.required">{{set.errorMessage.pw_required}}</small>
+            <small ng-show="set.form.password.$error.minlength || set.form.password.$error.pattern">{{set.errorMessage.pw_length}}</small>
+            <small ng-show="set.form.password.$error.maxlength">{{set.errorMessage.pw_maxlength}}</small> -->
+
+            <!-- TODO if time: 2nd PW field -->
+            <!-- <label translate="password_2"></label>
+            <input
+            name="password_2"
+            ng-model="set.password_2"
+            type="password"
+            class="form-control"
+            required>
+            <small ng-show="set.form.password_2.$error.required">{{set.errorMessage.pw_retype}}</small> -->
+
+            <label translate="city_label"></label>
+            <select
+                name="city"
+                ng-model="set.userData.data.translated_location"
+                class="form-control"
+                required>
+              <option ng-repeat="city in set.cityList.data" value="{{city.display_name}}">{{city.display_name}}</option>
+            </select>
+            <small ng-show="set.form.city.$error.required">{{set.errorMessage.city}}</small>
+
+            <label translate="about_me"></label>
+            <textarea ng-model="set.userData.data.description" class="form-control" rows="3"></textarea>
+
+            <label translate="age"></label>
+            <input ng-model="set.userData.data.age" class="form-control" type="text">
+
+            <label translate="photo_url"></label>
+            <input
+                name="photo_url"
+                ng-model="set.userData.data.photo_url"
+                type="url"
+                class="form-control"
+                ng-maxlength=100>
+            <small ng-show="set.form.photo_url.$error.url">{{set.errorMessage.photo_url}}</small>
+            <small ng-show="set.form.photo_url.$error.maxlength">{{set.errorMessage.photo_url_length}}</small>
+
+            <label translate="exchange_type_preferred"></label>
+            <input ng-model="set.userData.data.pair" class="form-check-input" type="checkbox"><label class="form-check-label" translate="pair"></label>
+            <input ng-model="set.userData.data.group" class="form-check-input" type="checkbox"><label class="form-check-label" translate="group"></label>
+            <input ng-model="set.userData.data.online" class="form-check-input" type="checkbox"><label class="form-check-label" translate="online"></label>
+
+            <!-- <div class="form-group"> -->
+            <label translate="lang_preference"></label>
+            <select
+                name="lang_preference"
+                ng-model="set.userData.data.lang_preference"
+                class="form-control"
+                required>
+              <option value="en" translate="en" selected></option>
+              <option value="es" translate="es"></option>
+            </select>
+            <small ng-show="set.form.lang_preference.$error.required">{{set.errorMessage.lang_preference}}</small>
+            <!-- </div> -->
+
+            SPEAKS LAN: {{set.userData.data.speaks_language_display_name}}
+            {{ set.userData.data.speaks_language_id}}
+            {{ set.doTheStuff() }}
+            <label translate="i_speak" for="user_speaks_language"></label>
+            <select
+                name="i_speak"
+                ng-model="set.userData.data.speaks_language_id"
+                class="form-control"
+                required>
+              <option value="1" translate="en"></option>
+              <option value="2" translate="es"></option>
+              <option value="3" translate="fr"></option>
+              <option value="4" translate="por"></option>
+              <option value="5" translate="viet"></option>
+            </select>
+            <small ng-show="set.form.i_speak.$error.required">{{set.errorMessage.i_speak}}</small>
+
+            <label translate="level" for="user_speaks_language_level"></label>
+            <select
+                name="i_speak_level"
+                ng-model="set.userData.data.speaks_level_id"
+                class="form-control"
+                required>
+              <option value="1" translate="beginner" selected></option>
+              <option value="2" translate="intermediate"></option>
+              <option value="3" translate="advanced"></option>
+              <option value="4" translate="native"></option>
+            </select>
+            <small ng-show="set.form.i_speak_level.$error.required">{{set.errorMessage.lang_level}}</small>
+
+            <label translate="i_want_to_learn" for="user_learns_language"></label>
+            <select
+                name="i_learn"
+                ng-model="set.userData.data.learns_language_display_name"
+                class="form-control"
+                required>
+              <option value="1" translate="en" selected></option>
+              <option value="2" translate="es"></option>
+              <option value="3" translate="fr"></option>
+              <option value="4" translate="por"></option>
+              <option value="5" translate="viet"></option>
+            </select>
+            <small ng-show="set.form.i_learn.$error.required">{{set.errorMessage.i_learn}}</small>
+
+            <label translate="level" for="user_learns_language_level"></label>
+            <select
+                name="i_learn_level"
+                ng-model="set.userData.data.learns_level_display_name"
+                class="form-control"
+                required>
+              <option value="1" translate="beginner" selected></option>
+              <option value="2" translate="intermediate"></option>
+              <option value="3" translate="advanced"></option>
+              <option value="4" translate="native"></option>
+            </select>
+            <small ng-show="set.form.i_learn_level.$error.required">{{set.errorMessage.lang_level}}</small>
+
+            <small ng-show="set.form.$invalid">{{set.errorMessage.form_invalid}}</small>
+            <small ng-show="set.form.$valid">{{set.errorMessage.form_valid}}</small>
+
+            <button ng-submit="set.submit(set.userData.data.name, set.userData.data.email, set.userData.data.password, set.userData.data.translated_location, set.userData.data.description, set.userData.data.age, set.userData.data.photo_url, set.userData.data.pair, set.userData.data.group, set.userData.data.online, set.userData.data.lang_preference, set.userData.data.i_speak, set.userData.data.i_learn, set.userData.data.i_speak_level, set.userData.data.i_learn_level)" translate="submit" type="button" class="btn btn-primary"></button>
+
+            </div>
+          </form>
+      </div>
+    </div>
+
+  </div>
+
+
+
   </div>
 </div>

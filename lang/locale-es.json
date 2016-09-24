@@ -1,5 +1,7 @@
 {
   "landing_message": "ganar fluidez en otro idioma. haz amig@s. aprende otra cultura...sin tener que salir de tu ciudad.",
+  "landing_quote": "“Si hablas con un hombre en un idioma que entiende, va a su cabeza. Si le hablas en su propio idioma, le llega al corazón.”",
+  "no_account": "¿No tienes cuenta?",
   "register": "Regístrate",
   "get_talking": "y empieza a hablar ya",
   "i_speak": "Hablo..",
@@ -37,11 +39,14 @@
   "submit": "Enviar",
   "logout": "Cerrar sesión",
   "login": "Login",
-  "hey": "Hola, ",
+  "hey": "Hola, {{user}}",
   "welcome_back": "Hola de nuevo,{{username}}",
   "language": "Idioma: ",
   "message_notification": "Tienes {{message_num}} mensaje(s) nuevos",
   "user_suggestions": "Nuestras sugerencias de intercambios de {{learns_language}} en {{city}}",
   "search_results": "Resultados de intercambios de {{learns_language}} en {{city}}",
-  "no_results": "¡Maldita sea! No hay intercambios disponibles."
+  "no_results": "¡Maldita sea! No hay intercambios disponibles.",
+  "message: ": "Mandar un mensaje a {{user}}",
+  "go_back": "Volver a la lista de resultados"
+
 }

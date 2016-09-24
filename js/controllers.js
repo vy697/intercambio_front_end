@@ -22,9 +22,9 @@ app.controller('landingController', ['logoutService', 'userService', 'loginServi
 
 
   //retrieve list of all users
-  // vm.getExchanges = searchService.getExchanges;
+  vm.getExchanges = searchService.getExchanges;
   //list of all users
-  // vm.exchanges = searchService.exchanges;
+  vm.exchanges = searchService.exchanges;
 
 
   //log user in
@@ -160,11 +160,15 @@ app.controller('signupController', ['localizeService', 'searchService', '$http',
   };
 }]);
 
-app.controller('profileController', [function() {
+app.controller('profileController', ['userService', function(userService) {
 
   var vm = this;
 
   vm.message = 'PROFILE CONTROLLER';
+
+  //user's profile data is stored here
+  vm.userProfile = userService.userProfile.data;
+  console.log(vm.userProfile);
 
 }]);
 
@@ -172,7 +176,7 @@ app.controller('homeController', ['searchService', 'userService', 'localizeServi
 
   var vm = this;
 
-  //if a user is logged in, retrieve their info TODO uncomment if everything breaks
+  //if a user is logged in, retrieve their info
   vm.getUserInfo = userService.getUserInfo();
 
   //user information for logged in user saved here
@@ -203,7 +207,7 @@ app.controller('indexController', ['logoutService', function(logoutService) {
 
 }]);
 
-app.controller('searchController', ['$window', '$http', 'searchService', 'localizeService', function($window, $http, searchService, localizeService) {
+app.controller('searchController', ['userService', '$window', '$http', 'searchService', 'localizeService', function(userService, $window, $http, searchService, localizeService) {
 
   var vm = this;
 
@@ -261,5 +265,52 @@ app.controller('searchController', ['$window', '$http', 'searchService', 'locali
     vm.errorMessage = vm.keys.err[lang_preference];
   }
 };
+
+//get user profile from search results
+vm.goToProfile = userService.goToProfile;
+
+}]);
+
+app.controller('settingsController', ['searchService', 'userService', function(searchService, userService) {
+
+  var vm = this;
+
+  vm.showForm = !vm.showForm;
+
+  //retrieve cities upon going to view
+  vm.getCities = searchService.getCities();
+  //list of cities are stored here to be accessed in the view in the select box
+  vm.cityList = searchService.cityList;
+
+  vm.getUserInfo = userService.getUserInfo();
+  //user information for logged in user saved here
+  vm.userData = userService.userData;
+
+  vm.submit = function(form){
+    console.log(form);
+  };
+  vm.doTheStuff = function(){
+    return typeof vm.userData.data.speaks_language_id;
+  };
+  vm.stuff = {
+
+  };
+
+
+}]);
+
+app.controller('messageController', [function() {
+
+  var vm = this;
+
+  vm.message = 'message controller';
+
+}]);
+
+app.controller('loginController', [function() {
+
+  var vm = this;
+
+  //controllerAs login
 
 }]);

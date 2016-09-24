@@ -1,1 +1,30 @@
-{{pro.message}}
+<!-- {{pro.userProfile}} -->
+<div class="profile">
+    <div class="container">
+
+      <div class="row" ng-repeat="user in pro.userProfile">
+        <div class="col-lg-3">
+          <h4>{{user.name}}</h4>
+          <img src="{{user.photo_url}}" alt="user profile photo" />
+        </div>
+
+        <div class="col-lg-8 results">
+          <h5>{{user.translated_location}}</h5>
+
+          <!-- TODO: (but not of utmost importance) - figure out why interpolate doesn't work here for user name -->
+          <i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="" ng-click="" translate="message" translate-values='{ user: pro.userProfile.name }'></a>
+
+          <h5 translate="age"></h5><p>{{user.age}}</p>
+          <h5 translate="i_speak"></h5><p>{{user.speaks_language_display_name}} ({{user.speaks_level_display_name}})</p>
+          <h5 translate="i_want_to_learn"></h5><p>{{user.learns_language_display_name}} ({{user.learns_level_display_name}})</p>
+          <h5 translate="exchange_type_preferred"></h5><p>{{user.pair | pair}} {{user.group | group}} {{user.online | online}}</p>
+          <h5 translate="about_me"></h5><p>{{user.description}}</p>
+        </div>
+
+        <div class="col-lg-1">
+          <a translate="go_back" href="#/search"></a>
+        </div>
+
+      </div>
+    </div>
+</div>
