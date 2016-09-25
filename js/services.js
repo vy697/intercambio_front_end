@@ -10,7 +10,7 @@ app.service('localizeService', ['$location', '$translate', '$window', function($
         es: 'es',
         err: {
             en: 'please fill out all the fields!',
-            es: 'favor de rellenar todos los campos!'
+            es: '¡favor de rellenar todos los campos!'
         },
         yes_results: {
             en: 'your search results: ',
@@ -201,7 +201,7 @@ app.service('userService', ['$location', 'searchService', '$http', '$window', fu
                 sv.userData.data = data.data.data[0];
 
                 //TODO when you edit convert data type to be used in edit form, look at knex select and test that
-                //language levels are getting through 
+                //language levels are getting through
                 // sv.userData.data.speaks_language_id += "";
                 // sv.userData.data.learns_language_id += "";
                 // sv.userData.data.

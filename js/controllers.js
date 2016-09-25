@@ -16,19 +16,14 @@ app.controller('landingController', ['logoutService', 'userService', 'loginServi
       vm.showLogin = false;
     }
   };
-
   //on button clicks ng-click
   vm.changeLanguage = localizeService.changeLanguage;
-
 
   //retrieve list of all users
   vm.getExchanges = searchService.getExchanges;
   //list of all users
   vm.exchanges = searchService.exchanges;
 
-
-  //log user in
-  vm.login = loginService.login;
   //if a user is logged in, retrieve their info
   vm.getUserInfo = userService.getUserInfo();
   //user information for logged in user saved here
@@ -160,7 +155,7 @@ app.controller('signupController', ['localizeService', 'searchService', '$http',
   };
 }]);
 
-app.controller('profileController', ['userService', function(userService) {
+app.controller('profileController', ['$window', 'userService', function($window, userService) {
 
   var vm = this;
 
@@ -169,6 +164,10 @@ app.controller('profileController', ['userService', function(userService) {
   //user's profile data is stored here
   vm.userProfile = userService.userProfile.data;
   console.log(vm.userProfile);
+
+  vm.goBack = function() {
+    $window.history.back();
+  };
 
 }]);
 
@@ -189,6 +188,9 @@ app.controller('homeController', ['searchService', 'userService', 'localizeServi
   vm.searchResults = searchService.searchResults;
 
   vm.findMatchesForUser = searchService.findMatchesForUser;
+
+  //get user profile from search results
+  vm.goToProfile = userService.goToProfile;
 
 }]);
 
@@ -211,16 +213,25 @@ app.controller('searchController', ['userService', '$window', '$http', 'searchSe
 
   var vm = this;
 
-  //retrieve cities upon going to view
-  vm.getCities = searchService.getCities();
-  //list of cities are stored here to be accessed in the view in the select box
-  vm.cityList = searchService.cityList;
-
-  //set language keys are stored here
+  //language keys are stored here
   vm.keys = localizeService.keys;
 
   //localize page based on user's lang setting
   localizeService.localizeForUser();
+
+  if($window.sessionStorage.token) {
+    vm.showLogout = true;
+  } else {
+    vm.showLogout = false;
+  }
+
+  //on button clicks ng-click
+  vm.changeLanguage = localizeService.changeLanguage;
+
+  //retrieve cities upon going to view
+  vm.getCities = searchService.getCities();
+  //list of cities are stored here to be accessed in the view in the select box
+  vm.cityList = searchService.cityList;
 
   //ng-click to retrieve matches based on user inputs
   // vm.findMatches = searchService.findMatches;
@@ -307,10 +318,26 @@ app.controller('messageController', [function() {
 
 }]);
 
-app.controller('loginController', [function() {
+app.controller('myProfileController', ['userService', 'localizeService', function(userService, localizeService) {
 
   var vm = this;
 
-  //controllerAs login
+  //if a user is logged in, retrieve their info
+  vm.getUserInfo = userService.getUserInfo();
+
+  //user information for logged in user saved here
+  vm.userData = userService.userData;
+
+  //localize page based on user's lang setting
+  localizeService.localizeForUser();
+
+}]);
+
+app.controller('loginController', ['loginService', function(loginService) {
+
+  var vm = this;
+
+  //log user in
+  vm.login = loginService.login;
 
 }]);

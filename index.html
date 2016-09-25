@@ -37,10 +37,11 @@
   <body ng-cloak>
 
     <div class="container-fluid">
-      <div class="row" ng-controller="indexController as index">
+      <div class="row index" ng-controller="indexController as index">
         <div class="col-lg-12 header">
-          <img src="./img/speech_blurbs.png" alt="speech bubbles" />
-          <h4 ng-show="index.showLogout" ng-click="index.logout()"><a href="/#/" translate="logout"></a></h4>
+          <a id="logo" href="/#/"><img src="./img/speech_blurbs.png" alt="speech bubbles" /></a>
+          <h4 ng-show="index.showLogout" ng-click="index.logout()"><a href="/#/" class="logout"><button  translate="logout" type="button" class="btn btn-secondary"></button></a></h4>
+          <h4><a href="/#/home" class="home_icon"><i class="fa fa-home home_icons" aria-hidden="true"></i></a><h4>
         </div>
       </div>
     </div>

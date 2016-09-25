@@ -3,9 +3,7 @@
   <div class="row">
       <div class="col-lg-12 header">
         <!-- LOGIN HERE -->
-        <h4 translate="hey" translate-values='{ user: land.userData.data.name }' ng-show="land.showLogout"></h4>
-        <!-- <h4>{{land.userData.data.name}}</h4><h4 style="display: inline" translate="hey" ng-show="land.showLogout"></h4> -->
-        <!-- <h4><a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" translate="login" ng-click="land.showLoginFunc()" ng-hide="land.showLogout"><span class="caret"></span></a></h4> -->
+        <a href="/#/home"><h4 translate="hey" translate-values='{ user: land.userData.data.name }' ng-show="land.showLogout"></h4></a>
         <h4><a href="/#/login"><button type="button" class="btn btn-secondary" translate="login" ng-hide="land.showLogout"></button></a></h4>
         <h4><a href="" ng-click="land.changeLanguage(land.keys.en)" ng-hide="land.showLogout">English</a></h4>
         <h4><a href="" ng-click="land.changeLanguage(land.keys.es)" ng-hide="land.showLogout">Español</a></h4>
@@ -75,7 +73,7 @@
     </div>
 
     <button ng-click="land.findMatches(land.i_speak, land.i_learn, land.city)" translate="search" type="button" class="btn btn-primary btn btn-block"></button>
-    <h4>{{land.errorMessage}}</h4>
+    <h4 id="validation_msg" ng-show="land.form.$invalid">{{land.errorMessage}}</h4>
   </form>
 
 </div>
@@ -104,27 +102,18 @@
 <div class="row blurb_div">
   <div class="col-lg-4 col-lg-offset-1 blurbs">
     <img src="./img/group_short.png" alt="girls laughing" />
-    <h1>Have fun learning</h1>
-    <article class="blurb_article">
-      Learning is more effective when you're having fun. Meeting native speakers of other languages not only increases your fluency but
-      also open doors to new friendships and cultural experiences.
-    </article>
+    <h1 translate="fun"></h1>
+    <article translate="fun_learning" class="blurb_article"></article>
   </div>
   <div class="col-lg-4 blurbs">
     <img src="./img/read.png" alt="book" />
-    <h1>Put the books down</h1>
-    <article class="blurb_article">
-      Learning without doing only takes you so far. Fluency is acquired through repetition and imitation.
-      What better way than with a real-life native?
-    </article>
+    <h1 translate="books"></h1>
+    <article translate="learning" class="blurb_article"></article>
   </div>
   <div class="col-lg-4 blurbs">
     <img src="./img/girls_laughing.png" alt="talk" />
-    <h1>Talk talk talk</h1>
-    <article class="blurb_article">
-      It's exciting to use the language you are learning in a practical way. Plus it's great motivation to keep learning.
-      So start talking your way to fluency!
-    </article>
+    <h1 translate="talky_talk"></h1>
+    <article translate="excite" class="blurb_article"></article>
   </div>
 </div>
 
@@ -151,9 +140,9 @@
 <div class="row footer">
 
   <div class="col-lg-12">
+    <h4><a href="#" translate="about"></a></h4>
     <h4><a href="http://linkedin.com/in/vy-phuong-nguyen" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></h4>
-    <h4><a href="https://github.com/vy697" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></h4>
-    <h4><a href="#">about</a></h4>
+    <h4><a href="https://github.com/vy697/intercambio_back_end" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></h4>
   </div>
 
 </div>

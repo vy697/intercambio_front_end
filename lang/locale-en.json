@@ -1,4 +1,5 @@
 {
+  "about": "About",
   "landing_message": "get fluent in a foreign language. make friends. learn a new culture...all without leaving your city.",
   "landing_quote": "“If you talk to a man in a language he understands, that goes to his head.  If you talk to him in his language, that goes to his heart.”",
   "no_account": "Don't have an account?",
@@ -39,13 +40,21 @@
   "submit": "Submit",
   "logout": "Logout",
   "login": "Login",
+  "fun": "Have fun learning",
+  "fun_learning": "Learning is more effective when you're having fun. Meeting native speakers of other languages not only increases your fluency but also open doors to new friendships and cultural experiences.",
+  "books": "Put the books down",
+  "learning": "Learning without doing only takes you so far. Fluency is acquired through repetition and imitation. What better way than with a real-life native?",
+  "talky_talk":"Talk talk talk",
+  "excite": "It's exciting to use the language you are learning in a practical way. Plus it's great motivation to keep learning. So start talking your way to fluency!",
   "hey": "Hey, {{user}}",
-  "welcome_back": "Welcome back, {{username}}",
+  "welcome_back": "Welcome back, {{username}}!",
   "language": "Language: ",
   "message_notification": "You have {{message_num}} new message(s)",
-  "user_suggestions": "Our recommendations for {{learns_language}} exchanges in {{city}}",
+  "user_suggestions": "Our recommendations for {{learns_language}} exchanges in {{city}}: ",
   "search_results": "Results for {{learns_language}} exchanges in {{city}}",
   "no_results": "Ahh shucks. Your search didn't return any results.",
   "message: ": "Message {{user}}",
-  "go_back": "Go back to search results"
+  "go_back": "Back",
+  "search_heading": "Look for exchanges in your area",
+  "view_profile": "View profile"
 }

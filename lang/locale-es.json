@@ -1,4 +1,5 @@
 {
+  "about": "Acerca de",
   "landing_message": "ganar fluidez en otro idioma. haz amig@s. aprende otra cultura...sin tener que salir de tu ciudad.",
   "landing_quote": "“Si hablas con un hombre en un idioma que entiende, va a su cabeza. Si le hablas en su propio idioma, le llega al corazón.”",
   "no_account": "¿No tienes cuenta?",
@@ -8,7 +9,7 @@
   "i_want_to_learn": "Quiero aprender..",
   "city_label": "Ciudad:",
   "search": "Busca mi intercambio",
-  "tour": "Quieres un tour de la web? Utiliza nuestra ",
+  "tour": "¿Quieres un tour de la web? Utiliza nuestra ",
   "or": "-O-",
   "demo": "cuenta demo.",
   "en": "inglés",
@@ -38,15 +39,23 @@
   "all_exchanges": "Ver todos los intercambios disponibles",
   "submit": "Enviar",
   "logout": "Cerrar sesión",
-  "login": "Login",
+  "login": "Iniciar Sesión",
+  "fun": "Diviértete aprendiendo",
+  "fun_learning": "Se aprende más pasándolo bien. Conocer a los hablantes nativos de otros idiomas no sólo te hace ganar fluidez en otra lengua, sino también te abre puertas para hacer nuevas amistades y experiencias culturales.",
+  "books": "Guarda los libros",
+  "learning": "Aprender sin hacer te ayudará sólo hasta cierto punto. La fluidez se gana a través de la repetición y la imitación. ¿Qué mejor manera que con un nativo de verdad?",
+  "talky_talk":"Hablar, hablar, y hablar",
+  "excite": "Hace ilusión poner en práctica lo que aprendes. Además, es gran motivación para seguir aprendiendo. Pues ya sabes, ¡empieza el camino a la fluidez con un intercambio ya!",
   "hey": "Hola, {{user}}",
-  "welcome_back": "Hola de nuevo,{{username}}",
+  "welcome_back": "¡Hola de nuevo,{{username}}!",
   "language": "Idioma: ",
   "message_notification": "Tienes {{message_num}} mensaje(s) nuevos",
   "user_suggestions": "Nuestras sugerencias de intercambios de {{learns_language}} en {{city}}",
-  "search_results": "Resultados de intercambios de {{learns_language}} en {{city}}",
+  "search_results": "Resultados de intercambios de {{learns_language}} en {{city}}: ",
   "no_results": "¡Maldita sea! No hay intercambios disponibles.",
   "message: ": "Mandar un mensaje a {{user}}",
-  "go_back": "Volver a la lista de resultados"
+  "go_back": "Volver",
+  "search_heading": "Busca intercambios en tu ciudad",
+  "view_profile": "Ver perfil"
 
 }

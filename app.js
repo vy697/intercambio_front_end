@@ -79,6 +79,11 @@ app.config(['$routeProvider', function($routeProvider) {
     templateUrl: './templates/search.html',
     controller: 'searchController',
     controllerAs: 'search'
+  })
+  .when('/my-profile', {
+    templateUrl: './templates/my-profile.html',
+    controller: 'myProfileController',
+    controllerAs: 'my'
   });
 }]);
 

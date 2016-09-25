@@ -62,6 +62,7 @@
 .landing .text_div {
   font-family: 'Roboto';
   margin-bottom: 6em;
+  left: -3em;
 }
 
 .landing form {
@@ -83,9 +84,7 @@
   float: right;
 }
 
-.landing .login_menu
-
- {
+.landing .login_menu {
   position: relative;
   top: 1.7em;
 }
@@ -107,7 +106,14 @@
   font-family: 'Roboto';
 }
 
+#validation_msg {
+  font-family: 'Roboto';
+  color: red;
+  text-align: center;
+}
+
 .landing .quote {
+  margin-bottom: 5em;
   font-family: 'Anton';
   color: white;
   height: 45em;
@@ -163,19 +169,18 @@
 
 .footer {
   height: 9em;
-  margin-top: em;
 }
 
 .footer h4 {
   display: inline;
   margin: .5em;
   font-family: 'Roboto';
-  font-size: 2.8em;
+  font-size: 2em;
 }
 
 .footer a {
   text-decoration: none;
   float: right;
   margin: .5em;
-
+  margin-top: 3em;
 }
