@@ -1,41 +1,40 @@
 <div class="home">
 
-<div class="row home_rows">
-  <div class="col-lg-3">
-    <a href="/#/home" class="glow"><i class="fa fa-home home_icons" aria-hidden="true"></i><br><span class="home_text">Home</span></a>
-  </div>
-  <div class="col-lg-3">
-    <a href="/#/messages" class="glow"><i class="fa fa-envelope-o home_icons" aria-hidden="true"></i><br><span class="home_text">Messages</span></a>
-  </div>
-  <div class="col-lg-3">
-    <a href="/#/search" class="glow"><i class="fa fa-search home_icons" aria-hidden="true"></i><br><span class="home_text">Search</span></a>
-  </div>
-  <div class="col-lg-2">
-    <a href="/#/my-profile" class="glow"><i class="fa fa-angellist home_icons" aria-hidden="true"></i><br><span class="home_text">My Profile</span></a>
-  </div>
-</div>
+    <div class="row home_rows">
+        <div class="col-lg-3">
+            <a href="/#/home" class="glow"><i class="fa fa-home home_icons" aria-hidden="true"></i><br><span class="home_text">Home</span></a>
+        </div>
+        <div class="col-lg-3">
+            <a href="/#/messages" class="glow"><i class="fa fa-envelope-o home_icons" aria-hidden="true"></i><br><span class="home_text">Messages</span></a>
+        </div>
+        <div class="col-lg-3">
+            <a href="/#/search" class="glow"><i class="fa fa-search home_icons" aria-hidden="true"></i><br><span class="home_text">Search</span></a>
+        </div>
+        <div class="col-lg-2">
+            <a href="/#/my-profile" class="glow"><i class="fa fa-angellist home_icons" aria-hidden="true"></i><br><span class="home_text">My Profile</span></a>
+        </div>
+    </div>
 
-<!-- <h2><a href="/#/profile">See My Profile</a></h2> -->
+    <!-- TODO: message_notification for number of messages you have STRETCH GOAL -->
+    <!-- <h3 translate="message_notification"></h3> -->
 
-<!-- TODO: message_notification for number of messages you have STRETCH GOAL -->
-<!-- <h3 translate="message_notification"></h3> -->
-<div class="row">
-  <div class="col-lg-12 welcome_back">
-    <h2 translate="welcome_back" translate-values='{ username: home.userData.data.name }'></h2>
-  </div>
-</div>
+    <div class="row">
+        <div class="col-lg-12 welcome_back">
+            <h2 translate="welcome_back" translate-values='{ username: home.userData.data.name }'></h2>
+        </div>
+    </div>
 
-<div class="col-lg-offset-2 line-separator"></div>
+    <div class="col-lg-offset-2 line-separator"></div>
 
-<div class="container search_container">
-  <h4 translate="user_suggestions" translate-values='{ city: home.userData.data.translated_location, learns_language: home.userData.data.learns_language_display_name }'></h4>
-    <div class="row search_row" ng-repeat="exchange in home.searchResults.data">
+    <div class="container search_container">
+        <h4 translate="user_suggestions" translate-values='{ city: home.userData.data.translated_location, learns_language: home.userData.data.learns_language_display_name }'></h4>
+        <div class="row search_row" ng-repeat="exchange in home.searchResults.data">
             <div class="col-lg-3">
                 <img src="{{exchange.photo_url}}" alt="user profile photo" />
             </div>
 
             <div class="col-lg-6 results">
-              <p id="result_name">{{exchange.name}}</p><small>{{exchange.translated_location}}</small>
+                <p id="result_name">{{exchange.name}}</p><small>{{exchange.translated_location}}</small>
                 <h5 translate="i_speak"></h5>
                 <p>{{exchange.speaks_language_display_name}} ({{exchange.speaks_level_display_name}})</p>
                 <h5 translate="i_want_to_learn"></h5>
@@ -45,43 +44,18 @@
             </div>
 
             <div class="col-lg-2 results_contact">
-              <a href="" ng-click="home.goToProfile(exchange.id)" translate="view_profile"></a></br>
-              <a href="/#/messages" id="result_envelope"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
+                <a href="" ng-click="home.goToProfile(exchange.id)" translate="view_profile"></a>
+                </br>
+                <a href="/#/messages" id="result_envelope"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
             </div>
         </div>
     </div>
 
-<div class="row footer">
-  <div class="col-lg-12">
-    <h4><span id="footer_about"><a href="" translate="about"></a></span></h4>
-    <h4><a href="http://linkedin.com/in/vy-phuong-nguyen" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></h4>
-    <h4><a href="https://github.com/vy697/intercambio_back_end" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></h4>
-  </div>
-</div>
-
-</div>
-
-
-
-
-
-<!-- ORIGINAL -->
-  <!-- <div class="container">
-    <div class="row" ng-repeat="exchange in home.searchResults.data">
-
-      <div class="col-lg-3">
-        <h4>{{exchange.name}}</h4>
-        <img src="{{exchange.photo_url}}" alt="user profile photo" />
-        <h5>{{exchange.translated_location}}</h5>
-      </div>
-
-      <div class="col-lg-6 results">
-        <h5 translate="i_speak"></h5><p>{{exchange.speaks_language_display_name}} ({{exchange.speaks_level_display_name}})</p>
-        <h5 translate="i_want_to_learn"></h5><p>{{exchange.learns_language_display_name}} ({{exchange.learns_level_display_name}})</p>
-        <h5 translate="exchange_type_preferred"></h5><p>{{exchange.pair | pair}} {{exchange.group | group}} {{exchange.online | online}}</p>
-
-      </div>
+    <div class="row footer">
+        <div class="col-lg-12">
+            <h4><span id="footer_about"><a href="" translate="about"></a></span></h4>
+            <h4><a href="http://linkedin.com/in/vy-phuong-nguyen" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></h4>
+            <h4><a href="https://github.com/vy697/intercambio_back_end" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></h4>
+        </div>
     </div>
-  </div> -->
-
 </div>

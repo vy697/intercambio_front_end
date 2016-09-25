@@ -1,181 +1,177 @@
-<div class="container signup">
+<div class="signup">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 translate="sign_up_message"></h1>
+      </div>
+    </div>
 
-<h1 translate="sign_up_message"></h1>
+    <div class="row">
+      <div class="col-lg-5 col-lg-offset-4">
+        <form name="signup.form">
+          <div class="form-group">
+            <label translate="name"></label>
+              <input
+              ng-class="{invalid: signup.form.name.$invalid}"
+              name="name"
+              ng-model="signup.name"
+              type="text"
+              class="form-control"
+              ng-minlength=2
+              ng-maxlength=20
+              required>
+              <small ng-show="signup.form.name.$error.required">{{signup.errorMessage.name_required}}</small>
+              <small ng-show="signup.form.name.$touched && signup.form.name.$error.minlength">{{signup.errorMessage.name_length}}</small>
 
-<div class="row">
-  <div class="col-lg-4">
+              <label translate="email"></label>
+              <input
+              name="email"
+              ng-model="signup.email"
+              type="email"
+              class="form-control"
+              required>
+              <small ng-show="signup.form.email.$error.required">{{signup.errorMessage.email_required}}</small>
+              <small ng-show="signup.form.email.$error.email">{{signup.errorMessage.email_valid}}</small>
 
-    <form name="signup.form">
-      <div class="form-group">
-        <label translate="name"></label>
-        <input
-        ng-class="{invalid: signup.form.name.$invalid}"
-        name="name"
-        ng-model="signup.name"
-        type="text"
-        class="form-control"
-        ng-minlength=2
-        ng-maxlength=20
-        required>
-        <small ng-show="signup.form.name.$error.required">{{signup.errorMessage.name_required}}</small>
-        <small ng-show="signup.form.name.$touched && signup.form.name.$error.minlength">{{signup.errorMessage.name_length}}</small>
+              <label translate="password"></label>
+              <input
+              name="password"
+              ng-model="signup.password"
+              type="password"
+              class="form-control"
+              ng-minlength="6"
+              ng-maxlength="20"
+              ng-pattern="/^(?=.*\d)[a-z\d]*$/i"
+              required>
+              <small ng-show="signup.form.password.$error.required">{{signup.errorMessage.pw_required}}</small>
+              <small ng-show="signup.form.password.$error.minlength || signup.form.password.$error.pattern">{{signup.errorMessage.pw_length}}</small>
+              <small ng-show="signup.form.password.$error.maxlength">{{signup.errorMessage.pw_maxlength}}</small>
 
-        <label translate="email"></label>
-        <input
-        name="email"
-        ng-model="signup.email"
-        type="email"
-        class="form-control"
-        required>
-        <small ng-show="signup.form.email.$error.required">{{signup.errorMessage.email_required}}</small>
-        <small ng-show="signup.form.email.$error.email">{{signup.errorMessage.email_valid}}</small>
+              <!-- TODO if time: 2nd PW field -->
+              <!-- <label translate="password_2"></label>
+              <input
+              name="password_2"
+              ng-model="signup.password_2"
+              type="password"
+              class="form-control"
+              required>
+              <small ng-show="signup.form.password_2.$error.required">{{signup.errorMessage.pw_retype}}</small> -->
 
-        <label translate="password"></label>
-        <input
-        name="password"
-        ng-model="signup.password"
-        type="password"
-        class="form-control"
-        ng-minlength=6
-        ng-maxlength=20
-        ng-pattern="/^(?=.*\d)[a-z\d]*$/i"
-        required>
-        <small ng-show="signup.form.password.$error.required">{{signup.errorMessage.pw_required}}</small>
-        <small ng-show="signup.form.password.$error.minlength || signup.form.password.$error.pattern">{{signup.errorMessage.pw_length}}</small>
-        <small ng-show="signup.form.password.$error.maxlength">{{signup.errorMessage.pw_maxlength}}</small>
+              <label translate="city_label"></label>
+              <select
+              name="city"
+              ng-model="signup.city"
+              class="form-control"
+              required>
+              <option ng-repeat="city in signup.cityList.data" value="{{city.display_name}}">{{city.display_name}}</option>
+            </select>
+              <small ng-show="signup.form.city.$error.required">{{signup.errorMessage.city}}</small>
 
-        <!-- TODO if time: 2nd PW field -->
-        <!-- <label translate="password_2"></label>
-        <input
-        name="password_2"
-        ng-model="signup.password_2"
-        type="password"
-        class="form-control"
-        required>
-        <small ng-show="signup.form.password_2.$error.required">{{signup.errorMessage.pw_retype}}</small> -->
+              <label translate="about_me"></label>
+              <textarea ng-model="signup.description" class="form-control" rows="3"></textarea>
 
-        <label translate="city_label"></label>
-        <select
-            name="city"
-            ng-model="signup.city"
-            class="form-control"
-            required>
-          <option ng-repeat="city in signup.cityList.data" value="{{city.display_name}}">{{city.display_name}}</option>
-        </select>
-        <small ng-show="signup.form.city.$error.required">{{signup.errorMessage.city}}</small>
+              <label translate="age"></label>
+              <input ng-model="signup.age" class="form-control" type="number">
 
-        <label translate="about_me"></label>
-        <textarea ng-model="signup.description" class="form-control" rows="3"></textarea>
+              <label translate="photo_url"></label>
+              <input
+              name="photo_url"
+              ng-model="signup.photo_url"
+              type="url"
+              class="form-control"
+                  ng-maxlength="">
+              <small ng-show="signup.form.photo_url.$error.url">{{signup.errorMessage.photo_url}}</small>
+              <small ng-show="signup.form.photo_url.$error.maxlength">{{signup.errorMessage.photo_url_length}}</small>
 
-        <label translate="age"></label>
-        <input ng-model="signup.age" class="form-control" type="number">
+              <label translate="lang_preference"></label>
+              <select
+              name="lang_preference"
+              ng-model="signup.lang_preference"
+              class="form-control"
+              required>
+                <option value="en" translate="en" selected></option>
+                <option value="es" translate="es"></option>
+              </select>
+              <small ng-show="signup.form.lang_preference.$error.required">{{signup.errorMessage.lang_preference}}</small>
 
-        <label translate="photo_url"></label>
-        <input
-            name="photo_url"
-            ng-model="signup.photo_url"
-            type="url"
-            class="form-control"
-            ng-maxlength=100>
-        <small ng-show="signup.form.photo_url.$error.url">{{signup.errorMessage.photo_url}}</small>
-        <small ng-show="signup.form.photo_url.$error.maxlength">{{signup.errorMessage.photo_url_length}}</small>
 
-        <label translate="exchange_type_preferred"></label>
-        <input ng-model="signup.pair" class="form-check-input" type="checkbox"><label class="form-check-label" translate="pair"></label>
-        <input ng-model="signup.group" class="form-check-input" type="checkbox"><label class="form-check-label" translate="group"></label>
-        <input ng-model="signup.online" class="form-check-input" type="checkbox"><label class="form-check-label" translate="online"></label>
+              <label translate="i_speak" for="user_speaks_language"></label>
+              <select
+              name="i_speak"
+              ng-model="signup.i_speak"
+              class="form-control"
+              required>
+                <option value="1" translate="en" selected></option>
+                <option value="2" translate="es"></option>
+                <option value="3" translate="fr"></option>
+                <option value="4" translate="por"></option>
+                <option value="5" translate="viet"></option>
+              </select>
+              <small ng-show="signup.form.i_speak.$error.required">{{signup.errorMessage.i_speak}}</small>
 
-        <!-- <div class="form-group"> -->
-        <label translate="lang_preference"></label>
-        <select
-            name="lang_preference"
-            ng-model="signup.lang_preference"
-            class="form-control"
-            required>
-          <option value="en" translate="en" selected></option>
-          <option value="es" translate="es"></option>
-        </select>
-        <small ng-show="signup.form.lang_preference.$error.required">{{signup.errorMessage.lang_preference}}</small>
-        <!-- </div> -->
+              <label translate="level" for="user_speaks_language_level"></label>
+              <select
+              name="i_speak_level"
+              ng-model="signup.i_speak_level"
+              class="form-control"
+              required>
+                <option value="1" translate="beginner" selected></option>
+                <option value="2" translate="intermediate"></option>
+                <option value="3" translate="advanced"></option>
+                <option value="4" translate="native"></option>
+              </select>
+              <small ng-show="signup.form.i_speak_level.$error.required">{{signup.errorMessage.lang_level}}</small>
 
-        <label translate="i_speak" for="user_speaks_language"></label>
-        <select
-            name="i_speak"
-            ng-model="signup.i_speak"
-            class="form-control"
-            required>
-          <option value="1" translate="en" selected></option>
-          <option value="2" translate="es"></option>
-          <option value="3" translate="fr"></option>
-          <option value="4" translate="por"></option>
-          <option value="5" translate="viet"></option>
-        </select>
-        <small ng-show="signup.form.i_speak.$error.required">{{signup.errorMessage.i_speak}}</small>
+              <label translate="i_want_to_learn" for="user_learns_language"></label>
+              <select
+              name="i_learn"
+              ng-model="signup.i_learn"
+              class="form-control"
+              required>
+                <option value="1" translate="en" selected></option>
+                <option value="2" translate="es"></option>
+                <option value="3" translate="fr"></option>
+                <option value="4" translate="por"></option>
+                <option value="5" translate="viet"></option>
+              </select>
+              <small ng-show="signup.form.i_learn.$error.required">{{signup.errorMessage.i_learn}}</small>
 
-        <label translate="level" for="user_speaks_language_level"></label>
-        <select
-            name="i_speak_level"
-            ng-model="signup.i_speak_level"
-            class="form-control"
-            required>
-          <option value="1" translate="beginner" selected></option>
-          <option value="2" translate="intermediate"></option>
-          <option value="3" translate="advanced"></option>
-          <option value="4" translate="native"></option>
-        </select>
-        <small ng-show="signup.form.i_speak_level.$error.required">{{signup.errorMessage.lang_level}}</small>
+              <label translate="level" for="user_learns_language_level"></label>
+              <select
+              name="i_learn_level"
+              ng-model="signup.i_learn_level"
+              class="form-control"
+              required>
+                <option value="1" translate="beginner" selected></option>
+                <option value="2" translate="intermediate"></option>
+                <option value="3" translate="advanced"></option>
+                <option value="4" translate="native"></option>
+              </select>
+              <small ng-show="signup.form.i_learn_level.$error.required">{{signup.errorMessage.lang_level}}</small>
 
-        <label translate="i_want_to_learn" for="user_learns_language"></label>
-        <select
-            name="i_learn"
-            ng-model="signup.i_learn"
-            class="form-control"
-            required>
-          <option value="1" translate="en" selected></option>
-          <option value="2" translate="es"></option>
-          <option value="3" translate="fr"></option>
-          <option value="4" translate="por"></option>
-          <option value="5" translate="viet"></option>
-        </select>
-        <small ng-show="signup.form.i_learn.$error.required">{{signup.errorMessage.i_learn}}</small>
+            <div class="radio">
+              <label translate="exchange_type_preferred"></label><br>
+              <label class="form-check-label" translate="pair"></label><input ng-model="signup.pair" class="form-check-input" type="checkbox">
+              <label class="form-check-label" translate="group"></label><input ng-model="signup.group" class="form-check-input" type="checkbox">
+              <label class="form-check-label" translate="online"></label><input ng-model="signup.online" class="form-check-input" type="checkbox">
+            </div>
 
-        <label translate="level" for="user_learns_language_level"></label>
-        <select
-            name="i_learn_level"
-            ng-model="signup.i_learn_level"
-            class="form-control"
-            required>
-          <option value="1" translate="beginner" selected></option>
-          <option value="2" translate="intermediate"></option>
-          <option value="3" translate="advanced"></option>
-          <option value="4" translate="native"></option>
-        </select>
-        <small ng-show="signup.form.i_learn_level.$error.required">{{signup.errorMessage.lang_level}}</small>
-
-        <small ng-show="signup.form.$invalid">{{signup.errorMessage.form_invalid}}</small>
-        <small ng-show="signup.form.$valid">{{signup.errorMessage.form_valid}}</small>
-
-        <button ng-click="signup.submit(signup.name, signup.email, signup.password, signup.city, signup.description, signup.age, signup.photo_url, signup.pair, signup.group, signup.online, signup.lang_preference, signup.i_speak, signup.i_learn, signup.i_speak_level, signup.i_learn_level)" translate="submit" type="button" class="btn btn-primary"></button>
-
+            <div class="signup_submit">
+              <button ng-click="signup.submit(signup.name, signup.email, signup.password, signup.city, signup.description, signup.age, signup.photo_url, signup.pair, signup.group, signup.online, signup.lang_preference, signup.i_speak, signup.i_learn, signup.i_speak_level, signup.i_learn_level)" translate="submit" type="button" class="signup_button"></button>
+              <small ng-show="signup.form.$invalid">{{signup.errorMessage.form_invalid}}</small>
+              <small ng-show="signup.form.$valid">{{signup.errorMessage.form_valid}}</small>
+            </div>
         </div>
       </form>
     </div>
   </div>
 </div>
 
-
-<!-- <div class="row">
-  <div class="col-md-3">
-    <button ng-click="home.showPostForm()" class="btn btn-primary form-control">Add new post</button>
+  <div class="row footer">
+    <div class="col-lg-12">
+        <h4><span id="footer_about"><a href="" translate="about"></a></span></h4>
+        <h4><a href="http://linkedin.com/in/vy-phuong-nguyen" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></h4>
+        <h4><a href="https://github.com/vy697/intercambio_back_end" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></h4>
+    </div>
   </div>
 </div>
-<div class="row">
-  <div class="col-md-6" ng-show="home.formDisplayed">
-    <form>
-      <input type="text" ng-model="home.user_id" placeholder="user id here">
-      <input type="text" ng-model="home.title" placeholder="title">
-      <input type="text" ng-model="home.description" placeholder="description">
-      <input type="text" ng-model="home.url" placeholder="url">
-      <button ng-click="home.submitPost(home.user_id, home.title, home.description, home.url)" class="btn btn-primary">Submit post</button>
-    </form>
-  </div> -->

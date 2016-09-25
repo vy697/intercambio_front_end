@@ -177,3 +177,408 @@
 .profile .results_contact {
   float: right;
 }
+.index .home_icon {
+  font-size: .45em;
+  position: relative;
+  bottom: 3.5em;
+}
+
+.index .home_icon a {
+  color: #AD343E;
+}
+
+.index img {
+  margin-top: 1em;
+}
+
+/* home */
+
+.home_rows {
+  text-align: center;
+  height: 12em;
+  background: #E0E0CE;
+  opacity: 0.7;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  margin-top: 3em;
+}
+
+.home_rows a {
+ text-decoration: none;
+ text-transform: uppercase;
+ transition: all 0.1s ease-in-out;
+}
+
+.glow:hover {
+ color: rgba(255, 255, 255, 1);
+ box-shadow: 0 10px 25px rgba(0, 0, 0, .6);
+}
+
+.home_icons {
+  font-size: 4em;
+  color: black;
+  margin-top: .7em;
+}
+
+.home_text {
+  font-size: 1.5em;
+  font-family: 'Roboto';
+  color: black;
+}
+
+.home .welcome_back {
+  text-align: center;
+  margin-bottom: 4em;
+  margin-top: 8em;
+  font-family: 'Roboto';
+}
+
+.home .footer {
+  background:#AD343E;
+}
+
+.search_container h4 {
+  font-family: 'Shadows Into Light Two';
+  font-size: 2.5em;
+  margin-top: 2em;
+  text-align: center;
+}
+
+/*search*/
+.search {
+  font-family: 'Roboto';
+}
+
+.search label {
+  font-family: 'Shadows Into Light Two';
+  font-size: 1.8em;
+}
+
+.search h1{
+  margin-top: 3em;
+  font-family: 'Shadows Into Light Two';
+  font-size: 3em;
+  text-align: center;
+}
+
+.search .background {
+  background-image: url('/../img/search_2.jpg');
+  background-size: 105em 50em;
+  height: 50em;
+  margin-top: 5.6em;
+}
+
+.form_div {
+  background: #E0E0CE;
+  border-radius: .5em;
+  height: 10em;
+  width: 80%;
+  position: relative;
+  top: 23em;
+  left: 11em;
+}
+
+.form_div_filling {
+  position: relative;
+  top: -10em;
+  right: 1em;
+}
+
+.search .button {
+  background: black;
+}
+
+.search .header {
+  border-bottom: 1px solid black;
+}
+
+.results {
+  margin: 1em;
+}
+
+.results h5 {
+  font-size: 1.3em;
+  font-family:'Shadows Into Light Two';
+}
+
+.search_row img {
+  height: 18em;
+  width: 13em;
+  border-radius: .3em;
+  margin: 1em;
+}
+
+.search_row {
+  margin: 4em;
+  border: 1px solid grey;
+  border-radius: .3em;
+}
+
+.results_contact {
+  text-align: center;
+  margin: 1em;
+}
+
+#result_name {
+  font-size: 2em;
+  margin-bottom: 0em;
+}
+
+#result_envelope {
+  font-size: 2.3em;
+  color: #F2AF29;
+}
+
+.search_row a {
+  font-size: 1.6em;
+  color: black;
+  text-decoration: none;
+}
+
+.search .footer {
+  background-color: #E0E0CE;
+}
+
+.profile {
+/*   border-top: 1px solid black; */
+  margin-top: 3em;
+}
+
+.profile .footer {
+  background:#AD343E;
+}
+
+.profile .go_back a {
+  font-size: 2em;
+  color: black;
+}
+
+.profile .results_contact {
+  float: right;
+}
+.index .home_icon {
+  font-size: .45em;
+  position: relative;
+  bottom: 3.5em;
+}
+
+.index .home_icon a {
+  color: #AD343E;
+}
+
+.index img {
+  margin-top: 1em;
+}
+
+/* home */
+
+.home_rows {
+  text-align: center;
+  height: 12em;
+  background: #E0E0CE;
+  opacity: 0.7;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  margin-top: 3em;
+}
+
+.home_rows a {
+ text-decoration: none;
+ text-transform: uppercase;
+ transition: all 0.1s ease-in-out;
+}
+
+.glow:hover {
+ color: rgba(255, 255, 255, 1);
+ box-shadow: 0 10px 25px rgba(0, 0, 0, .6);
+}
+
+.home_icons {
+  font-size: 4em;
+  color: black;
+  margin-top: .7em;
+}
+
+.home_text {
+  font-size: 1.5em;
+  font-family: 'Roboto';
+  color: black;
+}
+
+.home .welcome_back {
+  text-align: center;
+  margin-bottom: 4em;
+  margin-top: 8em;
+  font-family: 'Roboto';
+}
+
+.home .footer {
+  background:#AD343E;
+}
+
+.search_container h4 {
+  font-family: 'Shadows Into Light Two';
+  font-size: 2.5em;
+  margin-top: 2em;
+  text-align: center;
+}
+
+/*search*/
+.search {
+  font-family: 'Roboto';
+}
+
+.search label {
+  font-family: 'Shadows Into Light Two';
+  font-size: 1.8em;
+}
+
+.search h1{
+  margin-top: 3em;
+  font-family: 'Shadows Into Light Two';
+  font-size: 3em;
+  text-align: center;
+}
+
+.search .background {
+  background-image: url('/../img/search_2.jpg');
+  background-size: 105em 50em;
+  height: 50em;
+  margin-top: 5.6em;
+}
+
+.form_div {
+  background: #E0E0CE;
+  border-radius: .5em;
+  height: 10em;
+  width: 80%;
+  position: relative;
+  top: 23em;
+  left: 11em;
+}
+
+.form_div_filling {
+  position: relative;
+  top: -10em;
+  right: 1em;
+}
+
+.search .button {
+  background: black;
+}
+
+.search .header {
+  border-bottom: 1px solid black;
+}
+
+.results {
+  margin: 1em;
+}
+
+.results h5 {
+  font-size: 1.3em;
+  font-family:'Shadows Into Light Two';
+}
+
+.search_row img {
+  height: 18em;
+  width: 13em;
+  border-radius: .3em;
+  margin: 1em;
+}
+
+.search_row {
+  margin: 4em;
+  border: 1px solid grey;
+  border-radius: .3em;
+}
+
+.results_contact {
+  text-align: center;
+  margin: 1em;
+}
+
+#result_name {
+  font-size: 2em;
+  margin-bottom: 0em;
+}
+
+#result_envelope {
+  font-size: 2.3em;
+  color: #F2AF29;
+}
+
+.search_row a {
+  font-size: 1.6em;
+  color: black;
+  text-decoration: none;
+}
+
+.search .footer {
+  background-color: #E0E0CE;
+}
+
+.profile {
+/*   border-top: 1px solid black; */
+  margin-top: 3em;
+}
+
+.profile .footer {
+  background:#AD343E;
+}
+
+.profile .go_back a {
+  font-size: 2em;
+  color: black;
+}
+
+.profile .results_contact {
+  float: right;
+}
+
+.signup {
+  margin-top: 4em;
+  border-top: 1px solid black;
+/*   border-bottom: 1px solid black; */
+}
+
+.signup h1 {
+  text-align: center;
+  font-family: 'Shadows Into Light Two';
+}
+
+.signup form {
+  margin-top: 1em;
+  font-family: 'Roboto'
+}
+
+.signup label {
+  margin-top: 1.5em;
+}
+
+.signup .radio {
+  text-align: center;
+}
+
+.signup button {
+  height: 2.8em;
+  width: 37.6em;
+  margin-top: 1em;
+  color: white;
+  background-color: black;
+}
+
+.signup_submit {
+  text-align: center;
+}
+
+.signup .footer {
+  margin-top: 7em;
+  border-top: 1px solid black;
+  background-color: #E0E0CE;
+}
+
+.signup small {
+  color: red;
+  display: block;
+}
