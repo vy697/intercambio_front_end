@@ -1,6 +1,6 @@
 'use strict';
 
-app.service('localizeService', ['$location', '$translate', '$window', function($location, $translate, $window) {
+app.service('localizeService', ['$route', '$location', '$translate', '$window', function($route, $location, $translate, $window) {
 
     var sv = this;
 
@@ -9,7 +9,7 @@ app.service('localizeService', ['$location', '$translate', '$window', function($
         en: 'en',
         es: 'es',
         err: {
-            en: 'please fill out all the fields!',
+            en: 'please fill out all of the fields!',
             es: '¡favor de rellenar todos los campos!'
         },
         yes_results: {
@@ -17,7 +17,7 @@ app.service('localizeService', ['$location', '$translate', '$window', function($
             es: 'los resultados de tu búsqueda: ' //+Spanish exchanges in city
         },
         no_results: {
-            en: 'Ahh shucks. No results were returned for your search',
+            en: 'Ahh shucks. No results were returned for your search.',
             es: '¡Maldita sea! No hay resultados para tu búsqueda.'
         },
         form_validate: {
@@ -86,7 +86,8 @@ app.service('localizeService', ['$location', '$translate', '$window', function($
         $translate.use(key);
         //when default lang settings change, store it in local storage so that the setting persists
         localStorage.setItem('lang_preference', key);
-        $window.location.href = '/';
+        // $window.location.href = '/';
+        $window.location.reload();
     };
 
 }]);
@@ -159,7 +160,7 @@ app.service('searchService', ['localizeService', '$http', '$window', function(lo
 
     //for home page sugggestions list upon going to home page
     sv.findMatchesForUser = function(i_speak, i_learn, city, lang_preference) {
-
+      if($window.sessionStorage.token) {
         lang_preference = $window.sessionStorage.lang_preference;
         i_speak = $window.sessionStorage.i_speak;
         i_learn = $window.sessionStorage.i_learn;
@@ -182,7 +183,8 @@ app.service('searchService', ['localizeService', '$http', '$window', function(lo
             .catch(function(err) {
                 console.log('search results err: ', err);
             });
-    };
+          }
+      };
 
 }]);
 
@@ -190,12 +192,27 @@ app.service('userService', ['$location', 'searchService', '$http', '$window', fu
 
     var sv = this;
 
+    sv.name = {};
+
+    sv.getName = function() {
+      if($window.sessionStorage.token) {
+        return $http.get('http://localhost:3000/users')
+        .then(function(data) {
+          console.log(data.data.data[0].name);
+          sv.name.data = data.data.data[0].name;
+        })
+        .catch(function(err) {
+          console.log('couldn\'t get user\'s name :(', err);
+        });
+      }
+    };
+
     //for logged in user
     sv.userData = {};
 
     sv.getUserInfo = function() {
         //if a user is logged in (if a jwt exists), retrieve their info
-        //if($window.sessionStorage.token) {
+        if($window.sessionStorage.token) {
         return $http.get('http://localhost:3000/users')
             .then(function(data) {
                 sv.userData.data = data.data.data[0];
@@ -210,6 +227,7 @@ app.service('userService', ['$location', 'searchService', '$http', '$window', fu
                 $window.sessionStorage.i_speak = sv.userData.data.speaks_language_id;
                 $window.sessionStorage.i_learn = sv.userData.data.learns_language_id;
                 $window.sessionStorage.city = sv.userData.data.translated_location;
+                $window.sessionStorage.user_id = sv.userData.data.id;
                 console.log('sv.userData.data: ', sv.userData.data);
                 searchService.findMatchesForUser();
             })
@@ -219,13 +237,18 @@ app.service('userService', ['$location', 'searchService', '$http', '$window', fu
             .catch(function(err) {
                 console.log('getUserInfo err: ', err);
             });
-        //}
+        }
     };
 
     //a non-logged in user's info stored here
     sv.userProfile = {};
 
     sv.goToProfile = function(user_id) {
+
+      //block off access to user profiles to non-logged in users
+      // if(!$window.sessionStorage.token) {
+      //
+      // }
         console.log('goToProfile invoked');
         return $http.get('http://localhost:3000/users/profile', {
                 params: {
@@ -264,6 +287,9 @@ app.service('loginService', ['userService', '$window', '$http', '$location', fun
                 $window.sessionStorage.token = result.data.token;
                 //set lang_preference in window session storage
                 $window.sessionStorage.lang_preference = result.data.profile.lang_preference;
+                $window.location.reload();
+            })
+            .then(function() {
                 //send user to their home page
                 $location.url('/home');
             })
@@ -299,5 +325,26 @@ app.service('logoutService', ['$window', '$location', function($window, $locatio
 
         sv.message = 'successfully logged out';
     };
+
+}]);
+
+app.service('messageService', ['$http', function($http) {
+
+var sv = this;
+
+//store a user's threads here
+sv.threads = {};
+
+sv.getThreads = function() {
+  return $http.get('http://localhost:3000/users/messages')
+  .then(function(messages) {
+    sv.threads.data = messages.data;
+    console.log('logged in users msg: ', messages);
+  })
+  .catch(function(err) {
+    console.log('getThreads err:', err);
+  });
+};
+
 
 }]);

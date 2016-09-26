@@ -159,7 +159,7 @@
             <div class="signup_submit">
               <button ng-click="signup.submit(signup.name, signup.email, signup.password, signup.city, signup.description, signup.age, signup.photo_url, signup.pair, signup.group, signup.online, signup.lang_preference, signup.i_speak, signup.i_learn, signup.i_speak_level, signup.i_learn_level)" translate="submit" type="button" class="signup_button"></button>
               <small ng-show="signup.form.$invalid">{{signup.errorMessage.form_invalid}}</small>
-              <small ng-show="signup.form.$valid">{{signup.errorMessage.form_valid}}</small>
+              <small id="ok" ng-show="signup.form.$valid">{{signup.errorMessage.form_valid}}</small>
             </div>
         </div>
       </form>

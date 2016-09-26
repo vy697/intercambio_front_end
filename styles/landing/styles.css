@@ -52,6 +52,7 @@
 
 .landing_title {
   text-align: center;
+  margin-left: 2em
 }
 
 .landing_title h3 {
@@ -62,11 +63,13 @@
 .landing .text_div {
   font-family: 'Roboto';
   margin-bottom: 6em;
-  left: -3em;
+  left: 1em;
 }
 
 .landing form {
   margin-top: 2em;
+  position: relative;
+  left: 4em;
 }
 
 .landing label {
@@ -80,14 +83,6 @@
 /*   background-color: #AD343E; */
 }
 
-.landing .login_menu div {
-  float: right;
-}
-
-.landing .login_menu {
-  position: relative;
-  top: 1.7em;
-}
 
 .landing .results {
   margin-top: 3em;
@@ -110,6 +105,10 @@
   font-family: 'Roboto';
   color: red;
   text-align: center;
+}
+
+.landing .search {
+  text-align
 }
 
 .landing .quote {

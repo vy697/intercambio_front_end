@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('intercambio', ['ngRoute', 'pascalprecht.translate']);
+var app = angular.module('intercambio', ['ngAnimate','ngRoute', 'pascalprecht.translate']);
 
 app.factory('authInterceptor', ['$q', '$window', function($q, $window) {
   return {
@@ -91,22 +91,22 @@ app.config(['$routeProvider', function($routeProvider) {
 app.filter('pair', function() {
   return function(data) {
     if(data){
-      return '•pair';
+      return '•tandem';
       }
-    // if($window.sessionStorage.lang_preference === 'es' && data) {
-    //   return '•en pareja';
-    //   }
     };
   });
 // }]);
 
-app.filter('group', function() {
+app.filter('group', ['$window', function() {
   return function(data) {
-    if(data) {
+    if(data && $window.sessionStorage.token === 'en' || localStorage.lang_preference === 'en') {
       return '•group';
     }
+    if(data && $window.sessionStorage.token === 'es' || localStorage.lang_preference === 'es') {
+      return '•en grupo';
+    }
   };
-});
+}]);
 
 app.filter('online', function() {
   return function(data) {

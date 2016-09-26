@@ -57,8 +57,8 @@ app.controller('landingController', ['logoutService', 'userService', 'loginServi
         console.log('findMatches on landing: ', data);
         searchService.searchResults.data = data.data;
 
-
         if(data.data.message === 'no matches were found') {
+          searchService.searchResults = {};
           searchService.searchResults.message = localizeService.keys.no_results[lang_preference];
         } else {
           searchService.searchResults.data = data.data;
@@ -78,7 +78,6 @@ app.controller('landingController', ['logoutService', 'userService', 'loginServi
     }
   };
 
-
   //retrieve cities upon going to view
   vm.getCities = searchService.getCities();
   //list of cities are stored here to be accessed in the view in the select box
@@ -86,7 +85,7 @@ app.controller('landingController', ['logoutService', 'userService', 'loginServi
 
 }]);
 
-app.controller('signupController', ['localizeService', 'searchService', '$http', '$window', function(localizeService, searchService, $http, $window) {
+app.controller('signupController', ['$location', 'localizeService', 'searchService', '$http', '$window', function($location, localizeService, searchService, $http, $window) {
 
   var vm = this;
 
@@ -142,6 +141,7 @@ app.controller('signupController', ['localizeService', 'searchService', '$http',
       })
       .then(function(result) {
         console.log('ANGULAR SIGNUP RESULT: ', result);
+        $location.url('/login');
       })
       .catch(function(err) {
         err.statusText = "Unable to sign up";
@@ -213,6 +213,11 @@ app.controller('searchController', ['userService', '$window', '$http', 'searchSe
 
   var vm = this;
 
+  vm.name = userService.name;
+
+  //get user's name
+  vm.getName = userService.getName();
+
   //language keys are stored here
   vm.keys = localizeService.keys;
 
@@ -234,7 +239,6 @@ app.controller('searchController', ['userService', '$window', '$http', 'searchSe
   vm.cityList = searchService.cityList;
 
   //ng-click to retrieve matches based on user inputs
-  // vm.findMatches = searchService.findMatches;
   vm.searchResults = searchService.searchResults;
 
   vm.errorMessage = '';
@@ -254,7 +258,14 @@ app.controller('searchController', ['userService', '$window', '$http', 'searchSe
     }
     if(vm.form.$valid) {
     vm.errorMessage = '';
-    $http.get('http://localhost:3000/search/results', {params:{"i_speak": i_speak, "i_learn": i_learn, "city": city, "lang_preference": lang_preference}})
+    $http.get('http://localhost:3000/search/results', {
+      params: {
+        "i_speak": i_speak,
+        "i_learn": i_learn,
+        "city": city,
+        "lang_preference": lang_preference
+      }
+    })
     .then(function(data) {
       console.log('initial searchResults data:' , data);
       console.log('lang_preference: ', lang_preference);
@@ -277,6 +288,35 @@ app.controller('searchController', ['userService', '$window', '$http', 'searchSe
   }
 };
 
+vm.showOnlineFunc = function() {
+  vm.showOnline = true; 
+};
+
+vm.findOnlineMatches = function(language) {
+  var lang_preference;
+  if($window.sessionStorage.lang_preference) {
+    lang_preference = $window.sessionStorage.lang_preference;
+  //request here with whatever lang_preference is in localStorage
+    } else if (localStorage.lang_preference) {
+    lang_preference = localStorage.lang_preference;
+    } else {
+      lang_preference = 'en';
+    }
+    return $http.get('http://localhost:3000/search/online', {
+      params: {
+        "language": language,
+        "lang_preference": lang_preference
+      }
+  })
+  .then(function(result) {
+    vm.searchResults.data = result.data;
+    console.log('findOnlineMatches result: ', result);
+  })
+  .catch(function(err) {
+    console.log('findOnlineMatches err: ', err);
+  });
+};
+
 //get user profile from search results
 vm.goToProfile = userService.goToProfile;
 
@@ -297,24 +337,23 @@ app.controller('settingsController', ['searchService', 'userService', function(s
   //user information for logged in user saved here
   vm.userData = userService.userData;
 
-  vm.submit = function(form){
+  vm.submit = function(form) {
     console.log(form);
   };
-  vm.doTheStuff = function(){
-    return typeof vm.userData.data.speaks_language_id;
-  };
-  vm.stuff = {
 
-  };
-
-
+  // get data type of select box, not autopopulating
+  // vm.doTheStuff = function(){
+  //   return typeof vm.userData.data.speaks_language_id;
+  // };
 }]);
 
-app.controller('messageController', [function() {
+app.controller('messageController', ['messageService', function(messageService) {
 
   var vm = this;
 
-  vm.message = 'message controller';
+  vm.threads = messageService.threads;
+
+  vm.getThreads = messageService.getThreads();
 
 }]);
 

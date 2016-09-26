@@ -32,7 +32,7 @@
   "age": "Age",
   "photo_url": "Photo URL",
   "exchange_type_preferred": "Preferred exchange type: ",
-  "pair": "Pair",
+  "pair": "Tandem",
   "group": "Group",
   "online": "Online",
   "lang_preference": "Account Language",
@@ -56,5 +56,7 @@
   "message: ": "Message {{user}}",
   "go_back": "Back",
   "search_heading": "Look for exchanges in your area",
-  "view_profile": "View profile"
+  "view_profile": "View profile",
+  "all_online": "See all available online exchanges for: ",
+  "settle": "Why settle for just a city?"
 }

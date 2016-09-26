@@ -1,9 +1,8 @@
 <div class="search">
-
   <div class="row">
     <div class="col-lg-12 header">
       <!-- LOGIN HERE -->
-      <!-- <a href="/#/home"><h4 translate="hey" translate-values='{ user: search.userData.data.name }' ng-show="search.showLogout"></h4></a> -->
+      <a href="/#/home"><h4 translate="hey" translate-values='{ user: search.name.data }' ng-show="search.showLogout"></h4></a>
       <h4><a href="/#/login"><button type="button" class="btn btn-secondary" translate="login" ng-hide="search.showLogout"></button></a></h4>
       <h4><a href="" ng-click="search.changeLanguage(search.keys.en)" ng-hide="search.showLogout">English</a></h4>
       <h4><a href="" ng-click="search.changeLanguage(search.keys.es)" ng-hide="search.showLogout">Español</a></h4>
@@ -52,20 +51,40 @@
               <label style="color: #E0E0CE; display: block">block</label>
               <button ng-click="search.findMatches(search.i_speak, search.i_learn, search.city)" translate="search" type="button" class="btn btn-primary"></button>
             </div>
-            <h4>{{search.errorMessage}}</h4>
+            <small id="search_err">{{search.errorMessage}}</small>
           </form>
                 </div>
             </div>
+
+            <!-- advanced search -->
+            <div class="row">
+              <div class="col-lg-12 advanced">
+                <h5 ng-click="search.showOnlineFunc()" ng-show="!search.showOnline"><a href="" translate="settle"></a></h5>
+                <div ng-show="search.showOnline">
+                <h5 translate="all_online"></h5>
+                <select name="i_speak" ng-model="search.language" required>
+                  <option value="1" translate="en" selected></option>
+                  <option value="2" translate="es"></option>
+                  <option value="3" translate="fr"></option>
+                  <option value="4" translate="por"></option>
+                  <option value="5" translate="viet"></option>
+                </select>
+                <a href="" ng-click="search.findOnlineMatches(search.language)">Search</a>
+                </div>
+              </div>
+            </div>
+
+
         </div>
 
         <div class="container search_container">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-8">
                     <h3 id="search_message">{{search.searchResults.message}}</h3>
                 </div>
             </div>
 
-            <div class="row search_row" ng-repeat="exchange in search.searchResults.data">
+            <div class="row search_row repeated-item" ng-repeat="exchange in search.searchResults.data">
                 <div class="col-lg-3">
                     <img src="{{exchange.photo_url}}" alt="user profile photo" />
                 </div>
@@ -82,7 +101,7 @@
 
                 <div class="col-lg-2 results_contact">
                     <a href="" ng-click="search.goToProfile(exchange.id)" translate="view_profile"></a><br>
-                    <a href="/#/messages" id="result_envelope"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
+                    <a href="mailto:{{exchange.email}}" id="result_envelope"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>

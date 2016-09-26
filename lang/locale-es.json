@@ -32,7 +32,7 @@
   "age": "Edad",
   "photo_url": "Enlace de foto",
   "exchange_type_preferred": "Preferencia de intercambio:",
-  "pair": "en pareja",
+  "pair": "tandem",
   "group": "en grupo",
   "online": "online",
   "lang_preference": "Idioma de cuenta",
@@ -47,7 +47,7 @@
   "talky_talk":"Hablar, hablar, y hablar",
   "excite": "Hace ilusión poner en práctica lo que aprendes. Además, es gran motivación para seguir aprendiendo. Pues ya sabes, ¡empieza el camino a la fluidez con un intercambio ya!",
   "hey": "Hola, {{user}}",
-  "welcome_back": "¡Hola de nuevo,{{username}}!",
+  "welcome_back": "¡Hola de nuevo, {{username}}!",
   "language": "Idioma: ",
   "message_notification": "Tienes {{message_num}} mensaje(s) nuevos",
   "user_suggestions": "Nuestras sugerencias de intercambios de {{learns_language}} en {{city}}",
@@ -56,6 +56,8 @@
   "message: ": "Mandar un mensaje a {{user}}",
   "go_back": "Volver",
   "search_heading": "Busca intercambios en tu ciudad",
-  "view_profile": "Ver perfil"
+  "view_profile": "Ver perfil",
+  "all_online": "Ver todos los intercambios online disponibles de: ",
+  "settle": "¿Por qué conformarte con sólo una ciudad?"
 
 }

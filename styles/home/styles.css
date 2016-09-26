@@ -105,8 +105,8 @@
   right: 1em;
 }
 
-.search .button {
-  background: black;
+#search_err {
+  color: red;
 }
 
 .search .header {
@@ -117,8 +117,12 @@
   margin: 1em;
 }
 
-.results h5 {
+.results p {
   font-size: 1.3em;
+}
+
+.results h5 {
+  font-size: 1.7em;
   font-family:'Shadows Into Light Two';
 }
 
@@ -135,9 +139,36 @@
   border-radius: .3em;
 }
 
+.search .advanced {
+  position: relative;
+  top: 13.5em;
+  left: 12em;
+}
+
+.advanced a {
+  color: #AD343E;
+}
+
+.search h5 {
+  display: inline;
+}
+
+.search select {
+  margin-left: .3em;
+}
+
+.search a {
+  margin-left: .5em;
+}
+
 .results_contact {
   text-align: center;
   margin: 1em;
+}
+
+.results small {
+  display: block;
+  margin-bottom: 1em;
 }
 
 #result_name {
@@ -450,7 +481,7 @@
 .form_div {
   background: #E0E0CE;
   border-radius: .5em;
-  height: 10em;
+  height: 12em;
   width: 80%;
   position: relative;
   top: 23em;
@@ -560,6 +591,10 @@
   text-align: center;
 }
 
+.radio label {
+  margin: .5em;
+}
+
 .signup button {
   height: 2.8em;
   width: 37.6em;
@@ -581,4 +616,53 @@
 .signup small {
   color: red;
   display: block;
+  margin-top: .3em;
+}
+
+.signup {
+    background: #ffe711;
+  background: -moz-linear-gradient(top,  #ffe711 0%, #ff9501 98%);
+  background: -webkit-linear-gradient(top,  #ffe711 0%,#ff9501 98%);
+  background: linear-gradient(to bottom,  #ffe711 0%,#ff9501 98%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffe711', endColorstr='#ff9501',GradientType=0 );
+}
+
+#ok {
+  color: green;
+}
+
+/*
+  We're using CSS transitions for when
+  the enter and move events are triggered
+  for the element that has the .repeated-item
+  class
+*/
+.repeated-item.ng-enter, .repeated-item.ng-move {
+  transition: all 0.5s linear;
+  opacity: 0;
+}
+
+/*
+ The ng-enter-active and ng-move-active
+ are where the transition destination properties
+ are set so that the animation knows what to
+ animate.
+*/
+.repeated-item.ng-enter.ng-enter-active,
+.repeated-item.ng-move.ng-move-active {
+  opacity: 1;
+}
+
+/*
+  We're using CSS keyframe animations for when
+  the leave event is triggered for the element
+  that has the .repeated-item class
+*/
+.repeated-item.ng-leave {
+  animation: 0.5s my_animation;
+}
+
+@keyframes my_animation {
+  from { opacity:1; }
+  to { opacity:0; }
 }
