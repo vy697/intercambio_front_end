@@ -13,7 +13,13 @@
     <div class="col-lg-3 login_signup">
       <h4 translate="no_account"></h4>
       <h4 style="display: inline"><a href="/#/signup" translate="register"></a></h4><p style="display: inline"> <span translate="get_talking"></span><p>
-      <h5 translate="tour" style="display: inline"></h5> <a translate="demo" href="#"></a>
+      <h5 translate="tour" style="display: inline"></h5> <a translate="demo" href="" ng-click="login.showDemo()"></a>
+
+      <div ng-show="login.show" class="demo">
+        <i><h5 translate="login_demo"></h5></i>
+        <h5 translate="email_demo"></h5>
+        <h5 translate="password_demo"></h5>
+      </div>
     </div>
 
   </div>

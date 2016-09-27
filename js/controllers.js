@@ -9,13 +9,6 @@ app.controller('landingController', ['logoutService', 'userService', 'loginServi
 
   vm.showLogin = false;
 
-  vm.showLoginFunc = function() {
-    if(!vm.showLogin) {
-      vm.showLogin = true;
-    } else {
-      vm.showLogin = false;
-    }
-  };
   //on button clicks ng-click
   vm.changeLanguage = localizeService.changeLanguage;
 
@@ -102,14 +95,14 @@ app.controller('signupController', ['$location', 'localizeService', 'searchServi
   //retrieve cities upon going to view
   vm.getCities = searchService.getCities();
 
-
   vm.errorMessage = '';
 
   vm.submit = function(name, email, password, city, description, age, photo_url, pair, group, online, lang_preference, i_speak, i_learn, i_speak_level, i_learn_level) {
     console.log(vm.name, vm.email, vm.password, vm.city, vm.description, vm.age, vm.photo_url, vm.pair, vm.group, vm.online, vm.lang_preference, vm.i_speak, vm.i_speak_level, vm.i_learn, vm.i_learn_level);
-
+    console.log('SUBMIT INVOKED');
     //set language to display form validations in
     var language = '';
+
     if(localStorage.lang_preference) {
         language = localStorage.lang_preference;
       } else {
@@ -118,6 +111,9 @@ app.controller('signupController', ['$location', 'localizeService', 'searchServi
 
     //if the form meets the set requirements, send it through to be posted
     if(vm.form.$valid) {
+
+      console.log('SUBMIT INVOKED IN VALID FORM');
+
       return $http.post('http://localhost:3000/signup', {
         name: name,
         email: email,
@@ -209,7 +205,7 @@ app.controller('indexController', ['logoutService', function(logoutService) {
 
 }]);
 
-app.controller('searchController', ['userService', '$window', '$http', 'searchService', 'localizeService', function(userService, $window, $http, searchService, localizeService) {
+app.controller('searchController', ['$uibModal', '$log', 'userService', '$window', '$http', 'searchService', 'localizeService', function($uibModal, $log, userService, $window, $http, searchService, localizeService) {
 
   var vm = this;
 
@@ -226,8 +222,10 @@ app.controller('searchController', ['userService', '$window', '$http', 'searchSe
 
   if($window.sessionStorage.token) {
     vm.showLogout = true;
+    vm.loggedIn = true;
   } else {
     vm.showLogout = false;
+    vm.loggedIn = true; 
   }
 
   //on button clicks ng-click
@@ -289,7 +287,7 @@ app.controller('searchController', ['userService', '$window', '$http', 'searchSe
 };
 
 vm.showOnlineFunc = function() {
-  vm.showOnline = true; 
+  vm.showOnline = true;
 };
 
 vm.findOnlineMatches = function(language) {
@@ -309,8 +307,17 @@ vm.findOnlineMatches = function(language) {
       }
   })
   .then(function(result) {
-    vm.searchResults.data = result.data;
     console.log('findOnlineMatches result: ', result);
+
+    if(result.data.message === 'no matches were found') {
+      vm.searchResults.data = {};
+      vm.searchResults.message = localizeService.keys.no_results[lang_preference];
+    } else {
+      //set result list to empty if new search doesn't return anything
+      vm.searchResults.data = result.data;
+      vm.searchResults.message = localizeService.keys.yes_results[lang_preference];
+    }
+
   })
   .catch(function(err) {
     console.log('findOnlineMatches err: ', err);
@@ -320,6 +327,29 @@ vm.findOnlineMatches = function(language) {
 //get user profile from search results
 vm.goToProfile = userService.goToProfile;
 
+vm.open = userService.open;
+
+// vm.animationsEnabled = true;
+
+// var modalInstance =
+// vm.open = function(size) {
+//      $uibModal.open({
+//       animation: vm.animationsEnabled,
+//       // ariaLabelledBy: 'modal-title',
+//       // ariaDescribedBy: 'modal-body',
+//       templateUrl: './templates/signinmsg.html',
+//       size: size,
+//       controller: function() {
+//         var vm = this;
+//
+//         vm.ok = function(){
+//           console.log('ok invoked');
+//           vm.$close();
+//         };
+//       },
+//       controllerAs: 'modal'
+//     });
+//   };
 }]);
 
 app.controller('settingsController', ['searchService', 'userService', function(searchService, userService) {
@@ -378,5 +408,15 @@ app.controller('loginController', ['loginService', function(loginService) {
 
   //log user in
   vm.login = loginService.login;
+
+  vm.show = false;
+
+  vm.showDemo = function() {
+    if(!vm.show) {
+      vm.show = true;
+    } else {
+      vm.show = false;
+    }
+  };
 
 }]);

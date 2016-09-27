@@ -38,6 +38,7 @@
   "lang_preference": "Idioma de cuenta",
   "all_exchanges": "Ver todos los intercambios disponibles",
   "submit": "Enviar",
+  "all_good": "!Todo listo para empezar!",
   "logout": "Cerrar sesión",
   "login": "Iniciar Sesión",
   "fun": "Diviértete aprendiendo",
@@ -58,6 +59,11 @@
   "search_heading": "Busca intercambios en tu ciudad",
   "view_profile": "Ver perfil",
   "all_online": "Ver todos los intercambios online disponibles de: ",
-  "settle": "¿Por qué conformarte con sólo una ciudad?"
-
+  "settle": "¿Por qué conformarte con sólo una ciudad?",
+  "login_demo": "Inícia la sesión con nuestra cuenta",
+  "email_demo": "Correo electrónico: demo@email.com",
+  "password_demo": "Contraseña: 123456",
+  "login_msg": "primero,",
+  "please": "anda porfi",
+  "login_2": "inícia la sesión"
 }

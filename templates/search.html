@@ -1,117 +1,123 @@
 <div class="search">
-  <div class="row">
-    <div class="col-lg-12 header">
-      <!-- LOGIN HERE -->
-      <a href="/#/home"><h4 translate="hey" translate-values='{ user: search.name.data }' ng-show="search.showLogout"></h4></a>
-      <h4><a href="/#/login"><button type="button" class="btn btn-secondary" translate="login" ng-hide="search.showLogout"></button></a></h4>
-      <h4><a href="" ng-click="search.changeLanguage(search.keys.en)" ng-hide="search.showLogout">English</a></h4>
-      <h4><a href="" ng-click="search.changeLanguage(search.keys.es)" ng-hide="search.showLogout">Español</a></h4>
-    </div>
-  </div>
-
-  <div class="container-fluid background">
     <div class="row">
-      <div class="col-lg-12">
-          <h1 translate="search_heading"></h1>
-          </div>
+        <div class="col-lg-12 header">
+            <!-- LOGIN HERE -->
+            <a href="/#/home"><h4 translate="hey" translate-values='{ user: search.name.data }' ng-show="search.showLogout"></h4></a>
+            <h4><a href="/#/login"><button type="button" class="btn btn-secondary" translate="login" ng-hide="search.showLogout"></button></a></h4>
+            <h4><a href="" ng-click="search.changeLanguage(search.keys.en)" ng-hide="search.showLogout">English</a></h4>
+            <h4><a href="" ng-click="search.changeLanguage(search.keys.es)" ng-hide="search.showLogout">Español</a></h4>
+        </div>
     </div>
-    <div class="row form_div">
-      <div class="form_div_filling">
-          <form name="search.form">
-            <div class="col-lg-3 col-lg-offset-1 form-group">
-              <label translate="i_speak" for="i_speak"></label>
-              <select name="i_speak" ng-model="search.i_speak" class="form-control" required>
+
+    <div class="container-fluid background">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 translate="search_heading"></h1>
+            </div>
+        </div>
+        <div class="row form_div">
+            <div class="form_div_filling">
+                <form name="search.form">
+                    <div class="col-lg-3 col-lg-offset-1 form-group">
+                        <label translate="i_speak" for="i_speak"></label>
+                        <select name="i_speak" ng-model="search.i_speak" class="form-control" required>
                 <option value="1" translate="en" selected></option>
                 <option value="2" translate="es"></option>
                 <option value="3" translate="fr"></option>
                 <option value="4" translate="por"></option>
                 <option value="5" translate="viet"></option>
               </select>
-            </div>
+                    </div>
 
-            <div class="col-lg-3 form-group">
-              <label translate="i_want_to_learn" for="i_learn"></label>
-              <select name="i_learn" ng-model="search.i_learn" class="form-control" required>
+                    <div class="col-lg-3 form-group">
+                        <label translate="i_want_to_learn" for="i_learn"></label>
+                        <select name="i_learn" ng-model="search.i_learn" class="form-control" required>
                 <option value="1" translate="en" selected></option>
                 <option value="2" translate="es"></option>
                 <option value="3" translate="fr"></option>
                 <option value="4" translate="por"></option>
                 <option value="5" translate="viet"></option>
               </select>
-            </div>
+                    </div>
 
-            <div class="col-lg-3 form-group">
-              <label translate="city_label" for="city"></label>
-              <select name="city" ng-model="search.city" class="form-control" required>
+                    <div class="col-lg-3 form-group">
+                        <label translate="city_label" for="city"></label>
+                        <select name="city" ng-model="search.city" class="form-control" required>
                 <option ng-repeat="city in search.cityList.data" value="{{city.display_name}}">{{city.display_name}}</option>
               </select>
-            </div>
+                    </div>
 
-            <div class="col-lg-2">
-              <label style="color: #E0E0CE; display: block">block</label>
-              <button ng-click="search.findMatches(search.i_speak, search.i_learn, search.city)" translate="search" type="button" class="btn btn-primary"></button>
+                    <div class="col-lg-2">
+                        <label style="color: #E0E0CE; display: block">block</label>
+                        <button ng-click="search.findMatches(search.i_speak, search.i_learn, search.city)" translate="search" type="button" class="btn btn-primary"></button>
+                    </div>
+                    <small id="search_err">{{search.errorMessage}}</small>
+                </form>
             </div>
-            <small id="search_err">{{search.errorMessage}}</small>
-          </form>
-                </div>
-            </div>
+        </div>
 
-            <!-- advanced search -->
-            <div class="row">
-              <div class="col-lg-12 advanced">
+        <!-- advanced search -->
+        <div class="row">
+            <div class="col-lg-12 advanced">
                 <h5 ng-click="search.showOnlineFunc()" ng-show="!search.showOnline"><a href="" translate="settle"></a></h5>
                 <div ng-show="search.showOnline">
-                <h5 translate="all_online"></h5>
-                <select name="i_speak" ng-model="search.language" required>
+                    <h5 translate="all_online"></h5>
+                    <select name="i_speak" ng-model="search.language" required>
                   <option value="1" translate="en" selected></option>
                   <option value="2" translate="es"></option>
                   <option value="3" translate="fr"></option>
                   <option value="4" translate="por"></option>
                   <option value="5" translate="viet"></option>
                 </select>
-                <a href="" ng-click="search.findOnlineMatches(search.language)">Search</a>
-                </div>
-              </div>
-            </div>
-
-
-        </div>
-
-        <div class="container search_container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <h3 id="search_message">{{search.searchResults.message}}</h3>
-                </div>
-            </div>
-
-            <div class="row search_row repeated-item" ng-repeat="exchange in search.searchResults.data">
-                <div class="col-lg-3">
-                    <img src="{{exchange.photo_url}}" alt="user profile photo" />
-                </div>
-
-                <div class="col-lg-6 results">
-                    <p id="result_name">{{exchange.name}}</p><small>{{exchange.translated_location}}</small>
-                    <h5 translate="i_speak"></h5>
-                    <p>{{exchange.speaks_language_display_name}} ({{exchange.speaks_level_display_name}})</p>
-                    <h5 translate="i_want_to_learn"></h5>
-                    <p>{{exchange.learns_language_display_name}} ({{exchange.learns_level_display_name}})</p>
-                    <h5 translate="exchange_type_preferred"></h5>
-                    <p>{{exchange.pair | pair}} {{exchange.group | group}} {{exchange.online | online}}</p>
-                </div>
-
-                <div class="col-lg-2 results_contact">
-                    <a href="" ng-click="search.goToProfile(exchange.id)" translate="view_profile"></a><br>
-                    <a href="mailto:{{exchange.email}}" id="result_envelope"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
+                    <a href="" ng-click="search.findOnlineMatches(search.language)">Search</a>
                 </div>
             </div>
         </div>
 
-        <div class="row footer">
-            <div class="col-lg-12">
-                <h4><span id="footer_about"><a href="" translate="about"></a></span></h4>
-                <h4><a href="http://linkedin.com/in/vy-phuong-nguyen" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></h4>
-                <h4><a href="https://github.com/vy697/intercambio_back_end" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></h4>
+
+    </div>
+
+    <div class="container search_container">
+        <div class="row">
+            <div class="col-lg-8">
+                <h3 id="search_message">{{search.searchResults.message}}</h3>
             </div>
         </div>
 
-  </div>
+        <div class="row search_row repeated-item" ng-repeat="exchange in search.searchResults.data">
+            <div class="col-lg-3">
+                <img src="{{exchange.photo_url}}" alt="user profile photo" />
+            </div>
+
+            <div class="col-lg-6 results">
+                <p id="result_name">{{exchange.name}}</p><small>{{exchange.translated_location}}</small>
+                <h5 translate="i_speak"></h5>
+                <p>{{exchange.speaks_language_display_name}} ({{exchange.speaks_level_display_name}})</p>
+                <h5 translate="i_want_to_learn"></h5>
+                <p>{{exchange.learns_language_display_name}} ({{exchange.learns_level_display_name}})</p>
+                <h5 translate="exchange_type_preferred"></h5>
+                <p>{{exchange.pair | pair}} {{exchange.group | group}} {{exchange.online | online}}</p>
+            </div>
+
+            <div class="col-lg-2 results_contact">
+                <a href="" ng-click="search.goToProfile(exchange.id)" translate="view_profile"></a><br>
+                <a href="mailto:{{exchange.email}}" id="result_envelope" ng-hide="search.loggedIn"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- <h2><a href="" ng-click="search.open('sm')">HERE</a></h2> -->
+
+    <!-- modal -->
+
+
+
+    <div class="row footer">
+        <div class="col-lg-12">
+            <h4><span id="footer_about"><a href="" translate="about"></a></span></h4>
+            <h4><a href="http://linkedin.com/in/vy-phuong-nguyen" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></h4>
+            <h4><a href="https://github.com/vy697/intercambio_back_end" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a></h4>
+        </div>
+    </div>
+
+</div>

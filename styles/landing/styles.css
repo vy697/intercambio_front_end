@@ -166,8 +166,12 @@
   font-size: 1em;
 }
 
+.landing .footer {
+  background-color: #AD343E;
+}
+
 .footer {
-  height: 9em;
+  height: 10em;
 }
 
 .footer h4 {

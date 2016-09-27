@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('intercambio', ['ngAnimate','ngRoute', 'pascalprecht.translate']);
+var app = angular.module('intercambio', ['ui.bootstrap', 'ngAnimate','ngRoute', 'pascalprecht.translate']);
 
 app.factory('authInterceptor', ['$q', '$window', function($q, $window) {
   return {
@@ -97,7 +97,7 @@ app.filter('pair', function() {
   });
 // }]);
 
-app.filter('group', ['$window', function() {
+app.filter('group', ['$window', function($window) {
   return function(data) {
     if(data && $window.sessionStorage.token === 'en' || localStorage.lang_preference === 'en') {
       return '•group';
@@ -115,3 +115,12 @@ app.filter('online', function() {
     }
   };
 });
+
+// app.component('modalComponent', {
+//   templateUrl: './templates/signinmsg.html',
+//   bindings: {
+//     resolve: '<',
+//     close: '&',
+//     dismiss: '&'
+//   }
+// });

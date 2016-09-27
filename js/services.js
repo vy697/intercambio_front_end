@@ -188,7 +188,7 @@ app.service('searchService', ['localizeService', '$http', '$window', function(lo
 
 }]);
 
-app.service('userService', ['$location', 'searchService', '$http', '$window', function($location, searchService, $http, $window) {
+app.service('userService', ['$uibModal', '$log', '$location', 'searchService', '$http', '$window', function($uibModal, $log, $location, searchService, $http, $window) {
 
     var sv = this;
 
@@ -246,9 +246,10 @@ app.service('userService', ['$location', 'searchService', '$http', '$window', fu
     sv.goToProfile = function(user_id) {
 
       //block off access to user profiles to non-logged in users
-      // if(!$window.sessionStorage.token) {
-      //
-      // }
+      if(!$window.sessionStorage.token) {
+        console.log('no token found');
+        sv.open();
+      } else {
         console.log('goToProfile invoked');
         return $http.get('http://localhost:3000/users/profile', {
                 params: {
@@ -265,8 +266,28 @@ app.service('userService', ['$location', 'searchService', '$http', '$window', fu
             .catch(function(err) {
                 console.log('goToProfile err: ', err);
             });
-    };
+          }
+        };
 
+sv.animationsEnabled = true;
+
+        sv.open = function(size) {
+             $uibModal.open({
+              animation: sv.animationsEnabled,
+              // ariaLabelledBy: 'modal-title',
+              // ariaDescribedBy: 'modal-body',
+              templateUrl: './templates/signinmsg.html',
+              size: size,
+              controller: function() {
+
+                this.ok = function(){
+                  console.log('ok invoked');
+                  this.$close();
+                };
+              },
+              controllerAs: 'modal'
+            });
+          };
 }]);
 
 app.service('loginService', ['userService', '$window', '$http', '$location', function(userService, $window, $http, $location) {
@@ -283,6 +304,8 @@ app.service('loginService', ['userService', '$window', '$http', '$location', fun
             //logs user in with token
             .then(function(result) {
                 console.log('login result:', result);
+                //delete localStorage lang if there is one
+                localStorage.clear();
                 //set token in window session storage
                 $window.sessionStorage.token = result.data.token;
                 //set lang_preference in window session storage
@@ -345,6 +368,58 @@ sv.getThreads = function() {
     console.log('getThreads err:', err);
   });
 };
-
-
 }]);
+
+// app.service('modalService', ['$uibModal', function ($modal) {
+// // NB: For Angular-bootstrap 0.14.0 or later, use $uibModal above instead of $modal
+//     var sv = this;
+//
+//     var modalDefaults = {
+//         backdrop: true,
+//         keyboard: true,
+//         modalFade: true,
+//         templateUrl: '/app/partials/modal.html'
+//     };
+//
+//     var modalOptions = {
+//         closeButtonText: 'Close',
+//         actionButtonText: 'OK',
+//         headerText: 'Proceed?',
+//         bodyText: 'Perform this action?'
+//     };
+//
+//     this.showModal = function (customModalDefaults, customModalOptions) {
+//         if (!customModalDefaults) {
+//         customModalDefaults = {};
+//         customModalDefaults.backdrop = 'static';
+//         return this.show(customModalDefaults, customModalOptions);
+//     }
+//
+//     this.show = function (customModalDefaults, customModalOptions) {
+//         //Create temp objects to work with since we're in a singleton service
+//         var tempModalDefaults = {};
+//         var tempModalOptions = {};
+//
+//         //Map angular-ui modal custom defaults to modal defaults defined in service
+//         angular.extend(tempModalDefaults, modalDefaults, customModalDefaults);
+//
+//         //Map modal.html $scope custom properties to defaults defined in service
+//         angular.extend(tempModalOptions, modalOptions, customModalOptions);
+//
+//         if (!tempModalDefaults.controller) {
+//             tempModalDefaults.controller = function ($scope, $modalInstance) {
+//                 sv.modalOptions = tempModalOptions;
+//                 sv.modalOptions.ok = function (result) {
+//                     $modalInstance.close(result);
+//                 };
+//                 sv.modalOptions.close = function (result) {
+//                     $modalInstance.dismiss('cancel');
+//                 };
+//             };
+//         }
+//
+//         return $modal.open(tempModalDefaults).result;
+//     };
+//   };
+
+// }]);

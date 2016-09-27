@@ -38,6 +38,7 @@
   "lang_preference": "Account Language",
   "all_exchanges": "See All Available Exchanges",
   "submit": "Submit",
+  "all_good": "All good to go!",
   "logout": "Logout",
   "login": "Login",
   "fun": "Have fun learning",
@@ -58,5 +59,12 @@
   "search_heading": "Look for exchanges in your area",
   "view_profile": "View profile",
   "all_online": "See all available online exchanges for: ",
-  "settle": "Why settle for just a city?"
+  "settle": "Why settle for just a city?",
+  "login_demo": "Just login with these credentials",
+  "email_demo": "Email: demo@email.com",
+  "password_demo": "Password: 123456",
+  "login_msg": "you need to",
+  "please": "first, pretty please",
+  "login_2": "login"
+
 }
