@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('landingController', ['logoutService', 'userService', 'loginService', 'localizeService', 'searchService', '$translate', '$http', '$window', '$location', function(logoutService, userService, loginService, localizeService, searchService, $translate, $http, $window, $location) {
+app.controller('landingController', ['apiService', 'logoutService', 'userService', 'loginService', 'localizeService', 'searchService', '$translate', '$http', '$window', '$location', function(apiService, logoutService, userService, loginService, localizeService, searchService, $translate, $http, $window, $location) {
 
   var vm = this;
 
@@ -45,7 +45,7 @@ app.controller('landingController', ['logoutService', 'userService', 'loginServi
       lang_preference = 'en';
     }
     if(vm.form.$valid) {
-      $http.get('http://localhost:3000/search/results', {params:{"i_speak": i_speak, "i_learn": i_learn, "city": city, "lang_preference": lang_preference}})
+      $http.get(apiService.getApiUrl() + 'search/results', {params:{"i_speak": i_speak, "i_learn": i_learn, "city": city, "lang_preference": lang_preference}})
       .then(function(data) {
         console.log('findMatches on landing: ', data);
         searchService.searchResults.data = data.data;
@@ -78,7 +78,7 @@ app.controller('landingController', ['logoutService', 'userService', 'loginServi
 
 }]);
 
-app.controller('signupController', ['$location', 'localizeService', 'searchService', '$http', '$window', function($location, localizeService, searchService, $http, $window) {
+app.controller('signupController', ['apiService', '$location', 'localizeService', 'searchService', '$http', '$window', function(apiService, $location, localizeService, searchService, $http, $window) {
 
   var vm = this;
 
@@ -114,7 +114,7 @@ app.controller('signupController', ['$location', 'localizeService', 'searchServi
 
       console.log('SUBMIT INVOKED IN VALID FORM');
 
-      return $http.post('http://localhost:3000/signup', {
+      return $http.post(apiService.getApiUrl() + 'signup', {
         name: name,
         email: email,
         pw: password,
@@ -205,7 +205,7 @@ app.controller('indexController', ['logoutService', function(logoutService) {
 
 }]);
 
-app.controller('searchController', ['$uibModal', '$log', 'userService', '$window', '$http', 'searchService', 'localizeService', function($uibModal, $log, userService, $window, $http, searchService, localizeService) {
+app.controller('searchController', ['apiService', '$uibModal', '$log', 'userService', '$window', '$http', 'searchService', 'localizeService', function(apiService, $uibModal, $log, userService, $window, $http, searchService, localizeService) {
 
   var vm = this;
 
@@ -225,7 +225,7 @@ app.controller('searchController', ['$uibModal', '$log', 'userService', '$window
     vm.loggedIn = true;
   } else {
     vm.showLogout = false;
-    vm.loggedIn = true; 
+    vm.loggedIn = true;
   }
 
   //on button clicks ng-click
@@ -240,6 +240,8 @@ app.controller('searchController', ['$uibModal', '$log', 'userService', '$window
   vm.searchResults = searchService.searchResults;
 
   vm.errorMessage = '';
+
+  vm.results_exist = false;
 
   vm.findMatches = function(i_speak, i_learn, city) {
 
@@ -256,7 +258,7 @@ app.controller('searchController', ['$uibModal', '$log', 'userService', '$window
     }
     if(vm.form.$valid) {
     vm.errorMessage = '';
-    $http.get('http://localhost:3000/search/results', {
+    $http.get(apiService.getApiUrl() + 'search/results', {
       params: {
         "i_speak": i_speak,
         "i_learn": i_learn,
@@ -269,12 +271,14 @@ app.controller('searchController', ['$uibModal', '$log', 'userService', '$window
       console.log('lang_preference: ', lang_preference);
 
       if(data.data.message === 'no matches were found') {
-        vm.searchResults.data = {};
+        vm.searchResults.data = [];
         vm.searchResults.message = localizeService.keys.no_results[lang_preference];
+        vm.results_exist = false;
       } else {
         //set result list to empty if new search doesn't return anything
         vm.searchResults.data = data.data;
         vm.searchResults.message = localizeService.keys.yes_results[lang_preference];
+        vm.results_exist = true;
       }
     })
     .catch(function(err) {
@@ -284,6 +288,7 @@ app.controller('searchController', ['$uibModal', '$log', 'userService', '$window
     //render validation message from lang keys object on localizeService
     vm.errorMessage = vm.keys.err[lang_preference];
   }
+
 };
 
 vm.showOnlineFunc = function() {
@@ -300,7 +305,7 @@ vm.findOnlineMatches = function(language) {
     } else {
       lang_preference = 'en';
     }
-    return $http.get('http://localhost:3000/search/online', {
+    return $http.get(apiService.getApiUrl() + 'search/online', {
       params: {
         "language": language,
         "lang_preference": lang_preference
@@ -309,13 +314,15 @@ vm.findOnlineMatches = function(language) {
   .then(function(result) {
     console.log('findOnlineMatches result: ', result);
 
-    if(result.data.message === 'no matches were found') {
-      vm.searchResults.data = {};
+    if(result.data.length === 0) {
+      vm.searchResults.data = [];
       vm.searchResults.message = localizeService.keys.no_results[lang_preference];
+      vm.results_exist = false;
     } else {
       //set result list to empty if new search doesn't return anything
       vm.searchResults.data = result.data;
       vm.searchResults.message = localizeService.keys.yes_results[lang_preference];
+      vm.results_exist = true;
     }
 
   })
@@ -418,5 +425,13 @@ app.controller('loginController', ['loginService', function(loginService) {
       vm.show = false;
     }
   };
+
+}]);
+
+app.controller('aboutController', [function() {
+
+  var vm = this;
+
+  
 
 }]);

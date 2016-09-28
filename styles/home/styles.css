@@ -672,3 +672,715 @@
 #ok {
   color: green;
 }
+.index .home_icon {
+  font-size: .45em;
+  position: relative;
+  bottom: 3.5em;
+}
+
+.index .home_icon a {
+  color: #AD343E;
+}
+
+.index img {
+  margin-top: 1em;
+}
+
+/* home */
+
+.home_rows {
+  text-align: center;
+  height: 12em;
+  background: #E0E0CE;
+  opacity: 0.7;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  margin-top: 3em;
+}
+
+.home_rows a {
+ text-decoration: none;
+ text-transform: uppercase;
+ transition: all 0.1s ease-in-out;
+}
+
+.glow:hover {
+ color: rgba(255, 255, 255, 1);
+ box-shadow: 0 10px 25px rgba(0, 0, 0, .6);
+}
+
+.home_icons {
+  font-size: 4em;
+  color: black;
+  margin-top: .7em;
+}
+
+.home_text {
+  font-size: 1.5em;
+  font-family: 'Roboto';
+  color: black;
+}
+
+.home .welcome_back {
+  text-align: center;
+  margin-bottom: 4em;
+  margin-top: 8em;
+  font-family: 'Roboto';
+}
+
+.home .footer {
+  background:#AD343E;
+}
+
+.search_container h4 {
+  font-family: 'Shadows Into Light Two';
+  font-size: 2.5em;
+  margin-top: 2em;
+  text-align: center;
+}
+
+/*search*/
+.search {
+  font-family: 'Roboto';
+}
+
+.search label {
+  font-family: 'Shadows Into Light Two';
+  font-size: 1.8em;
+}
+
+.search h1{
+  margin-top: 3em;
+  font-family: 'Shadows Into Light Two';
+  font-size: 3em;
+  text-align: center;
+}
+
+.search .background {
+  background-image: url('/../img/search_2.jpg');
+  background-size: 105em 50em;
+  height: 50em;
+  margin-top: 5.6em;
+}
+
+.form_div {
+  background: #E0E0CE;
+  border-radius: .5em;
+  height: 10em;
+  width: 80%;
+  position: relative;
+  top: 23em;
+  left: 11em;
+}
+
+.form_div_filling {
+  position: relative;
+  top: -10em;
+  right: 1em;
+}
+
+#search_err {
+  color: red;
+}
+
+.search .header {
+  border-bottom: 1px solid black;
+}
+
+.results {
+  margin: 1em;
+}
+
+.results p {
+  font-size: 1.3em;
+}
+
+.results h5 {
+  font-size: 1.7em;
+  font-family:'Shadows Into Light Two';
+}
+
+.search_row img {
+  height: 18em;
+  width: 13em;
+  border-radius: .3em;
+  margin: 1em;
+}
+
+.search_row {
+  margin: 4em;
+  border: 1px solid grey;
+  border-radius: .3em;
+}
+
+.search .advanced {
+  position: relative;
+  top: 13.5em;
+  left: 12em;
+}
+
+.advanced a {
+  color: #AD343E;
+}
+
+.search h5 {
+  display: inline;
+}
+
+.search select {
+  margin-left: .3em;
+}
+
+.search a {
+  margin-left: .5em;
+}
+
+.results_contact {
+  text-align: center;
+  margin: 1em;
+}
+
+.results small {
+  display: block;
+  margin-bottom: 1em;
+}
+
+#result_name {
+  font-size: 2em;
+  margin-bottom: 0em;
+}
+
+#result_envelope {
+  font-size: 2.3em;
+  color: #F2AF29;
+}
+
+.search_row a {
+  font-size: 1.6em;
+  color: black;
+  text-decoration: none;
+}
+
+.search .footer {
+  background-color: #E0E0CE;
+}
+
+.profile {
+/*   border-top: 1px solid black; */
+  margin-top: 3em;
+}
+
+.profile .footer {
+  background:#AD343E;
+}
+
+.profile .go_back a {
+  font-size: 2em;
+  color: black;
+}
+
+.profile .results_contact {
+  float: right;
+}
+.index .home_icon {
+  font-size: .45em;
+  position: relative;
+  bottom: 3.5em;
+}
+
+.index .home_icon a {
+  color: #AD343E;
+}
+
+.index img {
+  margin-top: 1em;
+}
+
+/* home */
+
+.home_rows {
+  text-align: center;
+  height: 12em;
+  background: #E0E0CE;
+  opacity: 0.7;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  margin-top: 3em;
+}
+
+.home_rows a {
+ text-decoration: none;
+ text-transform: uppercase;
+ transition: all 0.1s ease-in-out;
+}
+
+.glow:hover {
+ color: rgba(255, 255, 255, 1);
+ box-shadow: 0 10px 25px rgba(0, 0, 0, .6);
+}
+
+.home_icons {
+  font-size: 4em;
+  color: black;
+  margin-top: .7em;
+}
+
+.home_text {
+  font-size: 1.5em;
+  font-family: 'Roboto';
+  color: black;
+}
+
+.home .welcome_back {
+  text-align: center;
+  margin-bottom: 4em;
+  margin-top: 8em;
+  font-family: 'Roboto';
+}
+
+.home .footer {
+  background:#AD343E;
+}
+
+.search_container h4 {
+  font-family: 'Shadows Into Light Two';
+  font-size: 2.5em;
+  margin-top: 2em;
+  text-align: center;
+}
+
+/*search*/
+.search {
+  font-family: 'Roboto';
+}
+
+.search label {
+  font-family: 'Shadows Into Light Two';
+  font-size: 1.8em;
+}
+
+.search h1{
+  margin-top: 3em;
+  font-family: 'Shadows Into Light Two';
+  font-size: 3em;
+  text-align: center;
+}
+
+.search .background {
+  background-image: url('/../img/search_2.jpg');
+  background-size: 105em 50em;
+  height: 50em;
+  margin-top: 5.6em;
+}
+
+.form_div {
+  background: #E0E0CE;
+  border-radius: .5em;
+  height: 10em;
+  width: 80%;
+  position: relative;
+  top: 23em;
+  left: 11em;
+}
+
+.form_div_filling {
+  position: relative;
+  top: -10em;
+  right: 1em;
+}
+
+.search .button {
+  background: black;
+}
+
+.search .header {
+  border-bottom: 1px solid black;
+}
+
+.results {
+  margin: 1em;
+}
+
+.results h5 {
+  font-size: 1.3em;
+  font-family:'Shadows Into Light Two';
+}
+
+.search_row img {
+  height: 18em;
+  width: 13em;
+  border-radius: .3em;
+  margin: 1em;
+}
+
+.search_row {
+  margin: 4em;
+  border: 1px solid grey;
+  border-radius: .3em;
+}
+
+.results_contact {
+  text-align: center;
+  margin: 1em;
+}
+
+#result_name {
+  font-size: 2em;
+  margin-bottom: 0em;
+}
+
+#result_envelope {
+  font-size: 2.3em;
+  color: #F2AF29;
+}
+
+.search_row a {
+  font-size: 1.6em;
+  color: black;
+  text-decoration: none;
+}
+
+.search .footer {
+  background-color: #E0E0CE;
+}
+
+.profile {
+/*   border-top: 1px solid black; */
+  margin-top: 3em;
+}
+
+.profile .footer {
+  background:#AD343E;
+}
+
+.profile .go_back a {
+  font-size: 2em;
+  color: black;
+}
+
+.profile .results_contact {
+  float: right;
+}
+.index .home_icon {
+  font-size: .45em;
+  position: relative;
+  bottom: 3.5em;
+}
+
+.index .home_icon a {
+  color: #AD343E;
+}
+
+.index img {
+  margin-top: 1em;
+}
+
+/* home */
+
+.home_rows {
+  text-align: center;
+  height: 12em;
+  background: #E0E0CE;
+  opacity: 0.7;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  margin-top: 3em;
+}
+
+.home_rows a {
+ text-decoration: none;
+ text-transform: uppercase;
+ transition: all 0.1s ease-in-out;
+}
+
+.glow:hover {
+ color: rgba(255, 255, 255, 1);
+ box-shadow: 0 10px 25px rgba(0, 0, 0, .6);
+}
+
+.home_icons {
+  font-size: 4em;
+  color: black;
+  margin-top: .7em;
+}
+
+.home_text {
+  font-size: 1.5em;
+  font-family: 'Roboto';
+  color: black;
+}
+
+.home .welcome_back {
+  text-align: center;
+  margin-bottom: 4em;
+  margin-top: 8em;
+  font-family: 'Roboto';
+}
+
+.home .footer {
+  background:#AD343E;
+}
+
+.search_container h4 {
+  font-family: 'Shadows Into Light Two';
+  font-size: 2.5em;
+  margin-top: 2em;
+  text-align: center;
+}
+
+/*search*/
+.search {
+  font-family: 'Roboto';
+}
+
+.search label {
+  font-family: 'Shadows Into Light Two';
+  font-size: 1.8em;
+}
+
+.search h1{
+  margin-top: 3em;
+  font-family: 'Shadows Into Light Two';
+  font-size: 3em;
+  text-align: center;
+}
+
+.search .background {
+  background-image: url('/../img/search_2.jpg');
+  background-size: 105em 50em;
+  height: 50em;
+  margin-top: 5.6em;
+}
+
+.form_div {
+  background: #E0E0CE;
+  border-radius: .5em;
+  height: 12em;
+  width: 80%;
+  position: relative;
+  top: 23em;
+  left: 11em;
+}
+
+.form_div_filling {
+  position: relative;
+  top: -10em;
+  right: 1em;
+}
+
+.search .button {
+  background: black;
+}
+
+.search .header {
+  border-bottom: 1px solid black;
+}
+
+.results {
+  margin: 1em;
+}
+
+.results h5 {
+  font-size: 1.3em;
+  font-family:'Shadows Into Light Two';
+}
+
+.search_row img {
+  height: 18em;
+  width: 13em;
+  border-radius: .3em;
+  margin: 1em;
+}
+
+.search_row {
+  margin: 4em;
+  border: 1px solid grey;
+  border-radius: .3em;
+}
+
+.results_contact {
+  text-align: center;
+  margin: 1em;
+}
+
+#result_name {
+  font-size: 2em;
+  margin-bottom: 0em;
+}
+
+#result_envelope {
+  font-size: 2.3em;
+  color: #F2AF29;
+}
+
+.search_row a {
+  font-size: 1.6em;
+  color: black;
+  text-decoration: none;
+}
+
+.search .footer {
+  background-color: #E0E0CE;
+}
+
+/*
+  We're using CSS transitions for when
+  the enter and move events are triggered
+  for the element that has the .repeated-item
+  class
+*/
+.repeated-item.ng-enter, .repeated-item.ng-move {
+  transition: all 0.5s linear;
+  opacity: 0;
+}
+
+/*
+ The ng-enter-active and ng-move-active
+ are where the transition destination properties
+ are set so that the animation knows what to
+ animate.
+*/
+.repeated-item.ng-enter.ng-enter-active,
+.repeated-item.ng-move.ng-move-active {
+  opacity: 1;
+}
+
+/*
+  We're using CSS keyframe animations for when
+  the leave event is triggered for the element
+  that has the .repeated-item class
+*/
+.repeated-item.ng-leave {
+  animation: 0.5s my_animation;
+}
+
+@keyframes my_animation {
+  from { opacity:1; }
+  to { opacity:0; }
+}
+
+/*profile*/
+.profile {
+/*   border-top: 1px solid black; */
+  margin-top: 3em;
+}
+
+.profile .footer {
+  background:#AD343E;
+}
+
+.profile .go_back a {
+  font-size: 2em;
+  color: black;
+}
+
+.profile .results_contact {
+  float: right;
+}
+
+.signup {
+  margin-top: 4em;
+  border-top: 1px solid black;
+/*   border-bottom: 1px solid black; */
+}
+
+.signup h1 {
+  text-align: center;
+  font-family: 'Shadows Into Light Two';
+}
+
+.signup form {
+  margin-top: 1em;
+  font-family: 'Roboto'
+}
+
+.signup label {
+  margin-top: 1.5em;
+}
+
+.signup .radio {
+  text-align: center;
+}
+
+.radio label {
+  margin: .5em;
+}
+
+.signup button {
+  height: 2.8em;
+  width: 37.6em;
+  margin-top: 1em;
+  color: white;
+  background-color: black;
+}
+
+.signup_submit {
+  text-align: center;
+}
+
+.signup .footer {
+  margin-top: 7em;
+  border-top: 1px solid black;
+  background-color: white;
+}
+
+.signup small {
+  color: red;
+  display: block;
+  margin-top: .3em;
+}
+
+.signup {
+    background: #ffe711;
+  background: -moz-linear-gradient(top,  #ffe711 0%, #ff9501 98%);
+  background: -webkit-linear-gradient(top,  #ffe711 0%,#ff9501 98%);
+  background: linear-gradient(to bottom,  #ffe711 0%,#ff9501 98%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffe711', endColorstr='#ff9501',GradientType=0 );
+}
+
+.signup .all_good {
+  text-align: center;
+  font-family: 'Shadows Into Light Two';
+}
+
+#ok {
+  color: green;
+}
+
+.about {
+  text-align: center;
+}
+
+.about .row {
+  margin: 5em;
+}
+
+.about h1 {
+  font-family:'Shadows Into Light Two';
+}
+
+.about p {
+  font-family: 'Roboto';
+}
+
+.about h2 {
+  font-family: 'Roboto'
+}
+
+.about p {
+  font-size: 1.5em;
+
+}
+
+.about hr {
+  width: 80%;
+}
+
+.about .a {
+  color: black;
+}
+
+.about .icon {
+  color: black;
+  font-size: 2em;
+}

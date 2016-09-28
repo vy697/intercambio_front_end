@@ -1,0 +1,69 @@
+
+.signup {
+  margin-top: 4em;
+  border-top: 1px solid black;
+/*   border-bottom: 1px solid black; */
+}
+
+.signup h1 {
+  text-align: center;
+  font-family: 'Shadows Into Light Two';
+}
+
+.signup form {
+  margin-top: 1em;
+  font-family: 'Roboto'
+}
+
+.signup label {
+  margin-top: 1.5em;
+}
+
+.signup .radio {
+  text-align: center;
+}
+
+.radio label {
+  margin: .5em;
+}
+
+.signup button {
+  height: 2.8em;
+  width: 37.6em;
+  margin-top: 1em;
+  color: white;
+  background-color: black;
+}
+
+.signup_submit {
+  text-align: center;
+}
+
+.signup .footer {
+  margin-top: 7em;
+  border-top: 1px solid black;
+  background-color: white;
+}
+
+.signup small {
+  color: red;
+  display: block;
+  margin-top: .3em;
+}
+
+.signup {
+    background: #ffe711;
+  background: -moz-linear-gradient(top,  #ffe711 0%, #ff9501 98%);
+  background: -webkit-linear-gradient(top,  #ffe711 0%,#ff9501 98%);
+  background: linear-gradient(to bottom,  #ffe711 0%,#ff9501 98%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffe711', endColorstr='#ff9501',GradientType=0 );
+}
+
+.signup .all_good {
+  text-align: center;
+  font-family: 'Shadows Into Light Two';
+}
+
+#ok {
+  color: green;
+}

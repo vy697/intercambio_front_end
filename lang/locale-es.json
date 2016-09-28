@@ -17,6 +17,7 @@
   "fr": "francés",
   "viet": "vietnamita",
   "por": "portugués",
+  "de": "alemán",
   "sign_up_message": "Antes de empezar...",
   "name": "Nombre",
   "email": "Correo electrónico",
@@ -65,5 +66,7 @@
   "password_demo": "Contraseña: 123456",
   "login_msg": "primero,",
   "please": "anda porfi",
-  "login_2": "inícia la sesión"
+  "login_2": "inícia la sesión",
+  "search": "Buscar",
+  "filter": "Filtrar por palabra clave: "
 }

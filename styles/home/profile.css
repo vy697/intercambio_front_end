@@ -1,0 +1,17 @@
+.profile {
+/*   border-top: 1px solid black; */
+  margin-top: 3em;
+}
+
+.profile .footer {
+  background:#AD343E;
+}
+
+.profile .go_back a {
+  font-size: 2em;
+  color: black;
+}
+
+.profile .results_contact {
+  float: right;
+}

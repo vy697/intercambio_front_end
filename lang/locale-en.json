@@ -17,6 +17,7 @@
   "fr": "French",
   "viet": "Vietnamese",
   "por": "Portuguese",
+  "de": "German",
   "sign_up_message": "Before we get started...",
   "name": "Name",
   "email": "Email",
@@ -65,6 +66,8 @@
   "password_demo": "Password: 123456",
   "login_msg": "you need to",
   "please": "first, pretty please",
-  "login_2": "login"
+  "login_2": "login",
+  "search": "Search",
+  "filter": "Filter by keyword: "
 
 }

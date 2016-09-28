@@ -1,3 +1,17 @@
+.index .home_icon {
+  font-size: .45em;
+  position: relative;
+  bottom: 3.5em;
+}
+
+.index .home_icon a {
+  color: #AD343E;
+}
+
+.index img {
+  margin-top: 1em;
+}
+
 /*landing*/
 
 .landing .jumbotron {
@@ -166,6 +180,7 @@
   font-size: 1em;
 }
 
+/*landing page footer*/
 .landing .footer {
   background-color: #AD343E;
 }

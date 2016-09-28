@@ -1,5 +1,15 @@
 'use strict';
 
+app.service('apiService', ['$location', function($location){
+  var sv = this;
+  sv.getApiUrl = function(){
+    // if ($location.host() === 'localhost') {
+       return '//localhost:3000/'; // development api url
+    // }
+    // return 'https://inter-cambio.herokuapp.com/'; // heroku api url
+  };
+}]);
+
 app.service('localizeService', ['$route', '$location', '$translate', '$window', function($route, $location, $translate, $window) {
 
     var sv = this;
@@ -92,8 +102,7 @@ app.service('localizeService', ['$route', '$location', '$translate', '$window', 
 
 }]);
 
-
-app.service('searchService', ['localizeService', '$http', '$window', function(localizeService, $http, $window) {
+app.service('searchService', ['apiService', 'localizeService', '$http', '$window', function(apiService, localizeService, $http, $window) {
 
     var sv = this;
 
@@ -110,12 +119,14 @@ app.service('searchService', ['localizeService', '$http', '$window', function(lo
         } else {
             lang_preference = 'en';
         }
-        $http.get('http://localhost:3000/search/cities', {
+        console.log('request language', lang_preference);
+        $http.get(apiService.getApiUrl() + 'search/cities', {
                 params: {
                     "lang_preference": lang_preference
                 }
             })
             .then(function(data) {
+                console.log('request language', lang_preference);
                 console.log('cities data: ', data);
                 sv.cityList.data = data.data;
             })
@@ -128,30 +139,30 @@ app.service('searchService', ['localizeService', '$http', '$window', function(lo
     sv.exchanges = {};
 
     //TODO: what to do with get all exchanges???
-    sv.getExchanges = function() {
-        var lang_preference;
-
-        if ($window.sessionStorage.lang_preference) {
-            lang_preference = $window.sessionStorage.lang_preference;
-            //request here with whatever lang_preference is in localStorage
-        } else if (localStorage.lang_preference) {
-            lang_preference = localStorage.lang_preference;
-        } else {
-            lang_preference = 'en';
-        }
-        $http.get("http://localhost:3000/search", {
-                params: {
-                    "lang_preference": lang_preference
-                }
-            })
-            .then(function(data) {
-                sv.exchanges.data = data.data;
-                console.log('THIS IS THE EXCHANGE DATA: ', sv.exchanges);
-            })
-            .catch(function(err) {
-                console.log('where is my data: ', err);
-            });
-    };
+    // sv.getExchanges = function() {
+    //     var lang_preference;
+    //
+    //     if ($window.sessionStorage.lang_preference) {
+    //         lang_preference = $window.sessionStorage.lang_preference;
+    //         //request here with whatever lang_preference is in localStorage
+    //     } else if (localStorage.lang_preference) {
+    //         lang_preference = localStorage.lang_preference;
+    //     } else {
+    //         lang_preference = 'en';
+    //     }
+    //     $http.get(apiService.getApiUrl() + 'search', {
+    //             params: {
+    //                 "lang_preference": lang_preference
+    //             }
+    //         })
+    //         .then(function(data) {
+    //             sv.exchanges.data = data.data;
+    //             console.log('THIS IS THE EXCHANGE DATA: ', sv.exchanges);
+    //         })
+    //         .catch(function(err) {
+    //             console.log('where is my data: ', err);
+    //         });
+    // };
 
     sv.keys = localizeService.keys;
 
@@ -168,7 +179,7 @@ app.service('searchService', ['localizeService', '$http', '$window', function(lo
 
         console.log('findMatchesForUser invoked', i_speak, i_learn, city, lang_preference);
 
-        return $http.get('http://localhost:3000/search/results', {
+        return $http.get(apiService.getApiUrl() + 'search/results', {
                 params: {
                     "i_speak": i_speak,
                     "i_learn": i_learn,
@@ -188,7 +199,7 @@ app.service('searchService', ['localizeService', '$http', '$window', function(lo
 
 }]);
 
-app.service('userService', ['$uibModal', '$log', '$location', 'searchService', '$http', '$window', function($uibModal, $log, $location, searchService, $http, $window) {
+app.service('userService', ['apiService', '$uibModal', '$log', '$location', 'searchService', '$http', '$window', function(apiService, $uibModal, $log, $location, searchService, $http, $window) {
 
     var sv = this;
 
@@ -196,7 +207,7 @@ app.service('userService', ['$uibModal', '$log', '$location', 'searchService', '
 
     sv.getName = function() {
       if($window.sessionStorage.token) {
-        return $http.get('http://localhost:3000/users')
+        return $http.get(apiService.getApiUrl() + 'users')
         .then(function(data) {
           console.log(data.data.data[0].name);
           sv.name.data = data.data.data[0].name;
@@ -213,7 +224,7 @@ app.service('userService', ['$uibModal', '$log', '$location', 'searchService', '
     sv.getUserInfo = function() {
         //if a user is logged in (if a jwt exists), retrieve their info
         if($window.sessionStorage.token) {
-        return $http.get('http://localhost:3000/users')
+        return $http.get(apiService.getApiUrl() + 'users')
             .then(function(data) {
                 sv.userData.data = data.data.data[0];
 
@@ -251,7 +262,7 @@ app.service('userService', ['$uibModal', '$log', '$location', 'searchService', '
         sv.open();
       } else {
         console.log('goToProfile invoked');
-        return $http.get('http://localhost:3000/users/profile', {
+        return $http.get(apiService.getApiUrl() + 'users/profile', {
                 params: {
                     "id": user_id
                 }
@@ -290,14 +301,14 @@ sv.animationsEnabled = true;
           };
 }]);
 
-app.service('loginService', ['userService', '$window', '$http', '$location', function(userService, $window, $http, $location) {
+app.service('loginService', ['apiService', 'userService', '$window', '$http', '$location', function(apiService, userService, $window, $http, $location) {
 
     var sv = this;
 
     sv.userData = userService.userData;
 
     sv.login = function(email, password) {
-        return $http.post('http://localhost:3000/auth', {
+        return $http.post(apiService.getApiUrl() + 'auth', {
                 email: email,
                 pw: password
             })
@@ -339,19 +350,20 @@ app.service('logoutService', ['$window', '$location', function($window, $locatio
     };
 
     sv.logout = function() {
+        console.log('logout invoked');
+        //clear user info in local storage to reset lang_settings
+        $window.sessionStorage.clear();
+
         delete $window.sessionStorage.token;
-
+        //hide logout button
         sv.showLogout = false;
-
-        // $location.url('/');
+        //redirect user to home page
         $window.location.href = '/';
-
-        sv.message = 'successfully logged out';
     };
 
 }]);
 
-app.service('messageService', ['$http', function($http) {
+app.service('messageService', ['apiService', '$http', function(apiService, $http) {
 
 var sv = this;
 
@@ -359,7 +371,7 @@ var sv = this;
 sv.threads = {};
 
 sv.getThreads = function() {
-  return $http.get('http://localhost:3000/users/messages')
+  return $http.get(apiService.getApiUrl() + 'users/messages')
   .then(function(messages) {
     sv.threads.data = messages.data;
     console.log('logged in users msg: ', messages);
@@ -369,57 +381,3 @@ sv.getThreads = function() {
   });
 };
 }]);
-
-// app.service('modalService', ['$uibModal', function ($modal) {
-// // NB: For Angular-bootstrap 0.14.0 or later, use $uibModal above instead of $modal
-//     var sv = this;
-//
-//     var modalDefaults = {
-//         backdrop: true,
-//         keyboard: true,
-//         modalFade: true,
-//         templateUrl: '/app/partials/modal.html'
-//     };
-//
-//     var modalOptions = {
-//         closeButtonText: 'Close',
-//         actionButtonText: 'OK',
-//         headerText: 'Proceed?',
-//         bodyText: 'Perform this action?'
-//     };
-//
-//     this.showModal = function (customModalDefaults, customModalOptions) {
-//         if (!customModalDefaults) {
-//         customModalDefaults = {};
-//         customModalDefaults.backdrop = 'static';
-//         return this.show(customModalDefaults, customModalOptions);
-//     }
-//
-//     this.show = function (customModalDefaults, customModalOptions) {
-//         //Create temp objects to work with since we're in a singleton service
-//         var tempModalDefaults = {};
-//         var tempModalOptions = {};
-//
-//         //Map angular-ui modal custom defaults to modal defaults defined in service
-//         angular.extend(tempModalDefaults, modalDefaults, customModalDefaults);
-//
-//         //Map modal.html $scope custom properties to defaults defined in service
-//         angular.extend(tempModalOptions, modalOptions, customModalOptions);
-//
-//         if (!tempModalDefaults.controller) {
-//             tempModalDefaults.controller = function ($scope, $modalInstance) {
-//                 sv.modalOptions = tempModalOptions;
-//                 sv.modalOptions.ok = function (result) {
-//                     $modalInstance.close(result);
-//                 };
-//                 sv.modalOptions.close = function (result) {
-//                     $modalInstance.dismiss('cancel');
-//                 };
-//             };
-//         }
-//
-//         return $modal.open(tempModalDefaults).result;
-//     };
-//   };
-
-// }]);

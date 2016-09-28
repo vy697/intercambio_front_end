@@ -84,6 +84,11 @@ app.config(['$routeProvider', function($routeProvider) {
     templateUrl: './templates/my-profile.html',
     controller: 'myProfileController',
     controllerAs: 'my'
+  })
+  .when('/about', {
+    templateUrl: './templates/about.html',
+    controller: 'aboutController',
+    controllerAs: 'about'
   });
 }]);
 

@@ -25,7 +25,7 @@
                 <option value="2" translate="es"></option>
                 <option value="3" translate="fr"></option>
                 <option value="4" translate="por"></option>
-                <option value="5" translate="viet"></option>
+                <option value="5" translate="de"></option>
               </select>
                     </div>
 
@@ -36,7 +36,7 @@
                 <option value="2" translate="es"></option>
                 <option value="3" translate="fr"></option>
                 <option value="4" translate="por"></option>
-                <option value="5" translate="viet"></option>
+                <option value="5" translate="de"></option>
               </select>
                     </div>
 
@@ -67,9 +67,9 @@
                   <option value="2" translate="es"></option>
                   <option value="3" translate="fr"></option>
                   <option value="4" translate="por"></option>
-                  <option value="5" translate="viet"></option>
+                  <option value="5" translate="de"></option>
                 </select>
-                    <a href="" ng-click="search.findOnlineMatches(search.language)">Search</a>
+                    <a translate="search" href="" ng-click="search.findOnlineMatches(search.language)"></a>
                 </div>
             </div>
         </div>
@@ -81,10 +81,14 @@
         <div class="row">
             <div class="col-lg-8">
                 <h3 id="search_message">{{search.searchResults.message}}</h3>
+                <div class="col-lg-3" ng-show="search.results_exist">
+                  <h5 translate="filter"></h5>
+                  <input class="form-control" type="text" value="" ng-model="find">
+                </div>
             </div>
         </div>
-
-        <div class="row search_row repeated-item" ng-repeat="exchange in search.searchResults.data">
+    </div>
+        <div class="row search_row repeated-item" ng-repeat="exchange in search.searchResults.data | filter: find">
             <div class="col-lg-3">
                 <img src="{{exchange.photo_url}}" alt="user profile photo" />
             </div>
@@ -112,7 +116,7 @@
 
 
 
-    <div class="row footer">
+    <div class="row footer" style="background-color: #E0E0CE; margin-top: 2em; border-top: 1px solid black">
         <div class="col-lg-12">
             <h4><span id="footer_about"><a href="" translate="about"></a></span></h4>
             <h4><a href="http://linkedin.com/in/vy-phuong-nguyen" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></h4>
