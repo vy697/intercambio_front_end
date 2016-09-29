@@ -68,6 +68,7 @@
   "please": "first, pretty please",
   "login_2": "login",
   "search": "Search",
-  "filter": "Filter by keyword: "
-
+  "filter": "Filter by keyword: ",
+  "home": "Home",
+  "profile": "Profile"
 }

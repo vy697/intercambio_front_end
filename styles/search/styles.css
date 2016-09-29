@@ -10,13 +10,6 @@
   font-size: 1.8em;
 }
 
-.search .background {
-  background-image: url('/../img/search_2.jpg');
-  background-size: 105em 50em;
-  height: 50em;
-  margin-top: 5.6em;
-}
-
 .form_div {
   background: #E0E0CE;
   border-radius: .5em;

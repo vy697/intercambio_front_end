@@ -4,9 +4,9 @@ app.service('apiService', ['$location', function($location){
   var sv = this;
   sv.getApiUrl = function(){
     // if ($location.host() === 'localhost') {
-       return '//localhost:3000/'; // development api url
+       //return '//localhost:3000/'; // development api url
     // }
-    // return 'https://inter-cambio.herokuapp.com/'; // heroku api url
+    return 'https://inter-cambio.herokuapp.com/'; // heroku api url
   };
 }]);
 

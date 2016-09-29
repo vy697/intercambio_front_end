@@ -27,13 +27,13 @@
 .home_rows a {
  text-decoration: none;
  text-transform: uppercase;
- transition: all 0.1s ease-in-out;
+ /*transition: all 0.1s ease-in-out;*/
 }
 
-.glow:hover {
+/*.glow:hover {
  color: rgba(255, 255, 255, 1);
  box-shadow: 0 10px 25px rgba(0, 0, 0, .6);
-}
+}*/
 
 .home_icons {
   font-size: 4em;
@@ -84,7 +84,7 @@
 
 .search .background {
   background-image: url('/../img/search_2.jpg');
-  background-size: 105em 50em;
+  background-size: 120em 50em;
   height: 50em;
   margin-top: 5.6em;
 }
@@ -234,17 +234,6 @@
   margin-top: 3em;
 }
 
-.home_rows a {
- text-decoration: none;
- text-transform: uppercase;
- transition: all 0.1s ease-in-out;
-}
-
-.glow:hover {
- color: rgba(255, 255, 255, 1);
- box-shadow: 0 10px 25px rgba(0, 0, 0, .6);
-}
-
 .home_icons {
   font-size: 4em;
   color: black;
@@ -290,13 +279,6 @@
   font-family: 'Shadows Into Light Two';
   font-size: 3em;
   text-align: center;
-}
-
-.search .background {
-  background-image: url('/../img/search_2.jpg');
-  background-size: 105em 50em;
-  height: 50em;
-  margin-top: 5.6em;
 }
 
 .form_div {
@@ -413,17 +395,6 @@
   margin-top: 3em;
 }
 
-.home_rows a {
- text-decoration: none;
- text-transform: uppercase;
- transition: all 0.1s ease-in-out;
-}
-
-.glow:hover {
- color: rgba(255, 255, 255, 1);
- box-shadow: 0 10px 25px rgba(0, 0, 0, .6);
-}
-
 .home_icons {
   font-size: 4em;
   color: black;
@@ -469,13 +440,6 @@
   font-family: 'Shadows Into Light Two';
   font-size: 3em;
   text-align: center;
-}
-
-.search .background {
-  background-image: url('/../img/search_2.jpg');
-  background-size: 105em 50em;
-  height: 50em;
-  margin-top: 5.6em;
 }
 
 .form_div {
@@ -698,17 +662,6 @@
   margin-top: 3em;
 }
 
-.home_rows a {
- text-decoration: none;
- text-transform: uppercase;
- transition: all 0.1s ease-in-out;
-}
-
-.glow:hover {
- color: rgba(255, 255, 255, 1);
- box-shadow: 0 10px 25px rgba(0, 0, 0, .6);
-}
-
 .home_icons {
   font-size: 4em;
   color: black;
@@ -754,13 +707,6 @@
   font-family: 'Shadows Into Light Two';
   font-size: 3em;
   text-align: center;
-}
-
-.search .background {
-  background-image: url('/../img/search_2.jpg');
-  background-size: 105em 50em;
-  height: 50em;
-  margin-top: 5.6em;
 }
 
 .form_div {
@@ -908,17 +854,6 @@
   margin-top: 3em;
 }
 
-.home_rows a {
- text-decoration: none;
- text-transform: uppercase;
- transition: all 0.1s ease-in-out;
-}
-
-.glow:hover {
- color: rgba(255, 255, 255, 1);
- box-shadow: 0 10px 25px rgba(0, 0, 0, .6);
-}
-
 .home_icons {
   font-size: 4em;
   color: black;
@@ -964,13 +899,6 @@
   font-family: 'Shadows Into Light Two';
   font-size: 3em;
   text-align: center;
-}
-
-.search .background {
-  background-image: url('/../img/search_2.jpg');
-  background-size: 105em 50em;
-  height: 50em;
-  margin-top: 5.6em;
 }
 
 .form_div {
@@ -1087,17 +1015,6 @@
   margin-top: 3em;
 }
 
-.home_rows a {
- text-decoration: none;
- text-transform: uppercase;
- transition: all 0.1s ease-in-out;
-}
-
-.glow:hover {
- color: rgba(255, 255, 255, 1);
- box-shadow: 0 10px 25px rgba(0, 0, 0, .6);
-}
-
 .home_icons {
   font-size: 4em;
   color: black;
@@ -1143,13 +1060,6 @@
   font-family: 'Shadows Into Light Two';
   font-size: 3em;
   text-align: center;
-}
-
-.search .background {
-  background-image: url('/../img/search_2.jpg');
-  background-size: 105em 50em;
-  height: 50em;
-  margin-top: 5.6em;
 }
 
 .form_div {
