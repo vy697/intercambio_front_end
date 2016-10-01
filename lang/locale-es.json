@@ -70,5 +70,9 @@
   "search": "Buscar",
   "filter": "Filtrar por palabra clave: ",
   "home": "Inicio",
-  "profile": "Perfil"
+  "profile": "Perfil",
+  "about_description": "es un app realizado por Vy Nguyen como proyecto final en el curso intensivo de desarrollo de web de Galvanize, inspirado en su amor hacía los idiomas, las culturas, y conectarse con las personas de todo el mundo.",
+  "tech_used": "Las tecnologías aplicadas:",
+  "connect": "Contacto",
+  "website": "Página personal"
 }

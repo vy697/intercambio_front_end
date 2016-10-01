@@ -70,5 +70,10 @@
   "search": "Search",
   "filter": "Filter by keyword: ",
   "home": "Home",
-  "profile": "Profile"
+  "profile": "Profile",
+  "about_description": "was developed by Vy Nguyen as a capstone project in the Galvanize immersive web development program, born from her love of languages, cultures, and connecting with people from all over the world.",
+  "tech_used": "Technologies used:",
+  "connect": "Connect",
+  "website": "Website"
+
 }
