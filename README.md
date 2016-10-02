@@ -1,12 +1,14 @@
 # InterCambio
 
-![App ScreenShot](img/jumbotron_img3.png)
+![App ScreenShot](./img/jumbotron_img3.png)
 
-[Check out the app online here] https://intercambio.surge.sh ||
+[Check out the app online here] https://intercambio.surge.sh
 
 <!-- [Watch A Video About The App](https://www.youtube.com/watch?v=b_8yTG0VTQc&feature=youtu.be) -->
 
-##### App description
+#### Link to back-end repo: https://github.com/vy697/intercambio_back_end
+
+### App description
 ------
 Many times, language students lack the component of direct immersion and opportunity to meet and practice with native speakers. InterCambio connects native speakers to language learners who want to develop practical conversation skills in their target languages, in exchange for practice with their partners in their own language. Users are matched based on the language that they speak, the language that they want to learn and their location. Users can create profiles with their language specifications, personal details, email, and if they are willing to be pen pals (as an online exchange) with someone. Since this app is intended to connect speakers of different languages, a flexible design been implemented to eliminate possible future limitations to future markets who don't just speak English. The app has been localized to Spanish and internationalized to facilitate future localizations of other languages.
 
